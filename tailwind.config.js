@@ -5,9 +5,13 @@ module.exports = {
     screens: {
       'sm': '640px',
       'md': '768px',
-      'lg': '1024px',
+      'lg': '992x',
       'xl': '1280px',
       '2xl': '1536px',
+    },
+    fontFamily: {
+      'raj': ['Rajdhani', 'sans-serif'],
+      'inter': ['Inter', 'sans-serif']
     },
     extend: {},
   },

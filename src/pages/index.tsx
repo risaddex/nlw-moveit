@@ -1,14 +1,16 @@
-import { Container, ExperienceBar, Profile, Section,  } from '../components'
+import { Wrapper, ExperienceBar, LeftPanel, RightPanel, Section,  } from '../components'
 
 export default function Home() {
   return (
-    <Container>
+    <Wrapper>
       <ExperienceBar />
 
       <Section>
-        <Profile />
+        <LeftPanel />
+        <RightPanel />
+
       </Section>
 
-    </Container>
+    </Wrapper>
   )
 }

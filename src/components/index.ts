@@ -1,4 +1,5 @@
-export { Container } from './Container'
+export { Wrapper } from './Wrapper'
 export { ExperienceBar } from './ExperienceBar'
 export { Section } from './Section'
-export { Profile } from './Profile'
+export { LeftPanel } from './LeftPanel'
+export { RightPanel } from './RightPanel'
