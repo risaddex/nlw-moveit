@@ -9,14 +9,3 @@ html, body {
   padding: 0;
   margin: 0;
 }
-
-@layer components {
-  .count-container:first-child {
-    border-right: 1px solid #f0f1f2;
-    @apply flex-grow;
-  }
-  .count-container:last-child {
-    border-left: 1px solid #f0f1f2;
-    @apply flex-grow;
-  }
-}
