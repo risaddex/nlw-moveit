@@ -1,4 +1,10 @@
-import { Wrapper, ExperienceBar, LeftPanel, RightPanel, Section,  } from '../components'
+import {
+  Wrapper,
+  ExperienceBar,
+  LeftPanel,
+  RightPanel,
+  Section,
+} from '../components'
 
 export default function Home() {
   return (
@@ -8,9 +14,7 @@ export default function Home() {
       <Section>
         <LeftPanel />
         <RightPanel />
-
       </Section>
-
     </Wrapper>
   )
 }

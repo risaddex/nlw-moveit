@@ -1,9 +1,14 @@
-import { Wrapper } from '../Wrapper'
+import styled from 'styled-components'
+
+const StyledSection = styled.section`
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6.25rem;
+  align-content: center;
+`
 
 export const Section = ({ children }) => {
-  return (
-    <section className="flex-grow max-w-full grid grid-cols-2 gap-24 content-center">
-      {children}
-    </section>
-  )
+  return <StyledSection>{children}</StyledSection>
 }

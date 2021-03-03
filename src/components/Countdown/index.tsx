@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { Button } from './Button'
+import { Clock } from './Clock'
+import styled from 'styled-components';
 
 export const Countdown = () => {
   const [time, setTime] = useState(25 * 60)
@@ -27,42 +30,30 @@ export const Countdown = () => {
   }
 
   return (
-    <>
-      <Clock
-        minLeft={minLeft}
-        minRight={minRight}
-        secLeft={secLeft}
-        secRight={secRight}
-      />
+    <div>
+      <CountdownContainer>
+        <Clock
+          minLeft={minLeft}
+          minRight={minRight}
+          secLeft={secLeft}
+          secRight={secRight}
+        />
+      </CountdownContainer>
       <Button toggleCount={toggleCountdown} />
-    </>
-  )
-}
-
-const Clock = ({ minLeft, minRight, secLeft, secRight }) => {
-  return (
-    <div className="container flex items-center justify-evenly font-raj font-semibold">
-      <div className="flex-grow flex justify-center shadow-md rounded lg:text-9xl text-8xl">
-        <div className="count-container">
-          <span>{minLeft}</span>
-          <span>{minRight}</span>
-        </div>
-        <span className="px-5">:</span>
-        <div className="count-container">
-          <span>{secLeft}</span>
-          <span>{secRight}</span>
-        </div>
-      </div>
     </div>
   )
 }
 
-const Button = ({ toggleCount }) => (
-  <button
-    type="button"
-    onClick={toggleCount}
-    className="text-white text-lg rounded-md w-full h-14 flex mt-8 justify-center items-center bg-blue-500 hover:bg-blue-800 transition"
-  >
-    Start a cycle
-  </button>
-)
+const CountdownContainer = styled.div`
+  display: flex;
+  align-items: center;
+  font-family: Rajdhani;
+  font-weight: 600;
+  color: var(--title);
+  
+
+  > span {
+    font-size: 6.25rem;
+    margin: 0 0.5rem;
+  }
+`

@@ -1,14 +1,20 @@
-import { Countdown } from "../Countdown"
-import { CompletedChallenges } from "./CompletedChallenges"
-import { Profile } from "./Profile"
+import { Countdown } from '../Countdown'
+import { CompletedChallenges } from './CompletedChallenges'
+import { Profile } from './Profile'
+import styled from 'styled-components'
 
 export const LeftPanel = () => {
   return (
-    <div className=" container flex flex-col">
+    <PanelContainer>
       <Profile />
       <CompletedChallenges />
       <Countdown />
-    </div>
+    </PanelContainer>
   )
 }
 
+const PanelContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`

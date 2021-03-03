@@ -1,6 +1,27 @@
+import styled from 'styled-components'
+
 export const CompletedChallenges = () => (
-  <div className=" px-5 text-gray-600 flex items-center justify-between mx-0 py-5 border-yellow-100 border-b-2">
-    <span className="text-lg">Completed Challenges</span>
-    <span className="text-md">25</span>
-  </div>
+  <ChallengeBox>
+    <Completed>Completed Challenges</Completed>
+    <Number>25</Number>
+  </ChallengeBox>
 )
+
+const ChallengeBox = styled.div`
+  padding: 1.25rem;
+  color: rgba(75, 85, 99, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px;
+  border-color: darkgray;
+`
+
+const Completed = styled.span`
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+`
+const Number = styled.span`
+  font-size: 1rem /* 18px */;
+  line-height: 1.25rem /* 28px */;
+`

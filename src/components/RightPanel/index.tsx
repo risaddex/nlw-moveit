@@ -1,8 +1,15 @@
+import styled from 'styled-components';
+
 
 export const RightPanel = () => {
   return (
-    <div className="flex flex-col">
+    <StyledRightPanel>
       vazio
-    </div>
+    </StyledRightPanel>
   )
 }
+
+const StyledRightPanel = styled.div`
+  display:flex;
+  flex-direction:column;
+`
