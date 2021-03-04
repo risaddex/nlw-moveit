@@ -1,7 +1,6 @@
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { ThemeProvider } from 'styled-components'
 import { myTheme } from '../styles/theme'
-
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`

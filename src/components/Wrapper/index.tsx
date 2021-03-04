@@ -8,6 +8,7 @@ export const Wrapper = ({ children }) => (
 
 const StyledWrapper = styled.div`
   height: 100vh;
+  width: 100%;
   max-width: 992px;
   margin: 0 auto;
   padding: 2.5rem 2rem;
