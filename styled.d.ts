@@ -6,5 +6,7 @@ declare module 'styled-components' {
     borderRadius: string
 
     colors: Object<string>
+
+    shadows: Object<string>
   }
 }
