@@ -21,13 +21,12 @@ export default function Home({
   challengesCompleted,
 }: HomeProps) {
   return (
-    
-      <Wrapper>
-        <ChallengesProvider
-      level={level}
-      currentExp={currentExp}
-      challengesCompleted={challengesCompleted}
-    >
+    <Wrapper>
+      <ChallengesProvider
+        level={level}
+        currentExp={currentExp}
+        challengesCompleted={challengesCompleted}
+      >
         <ExperienceBar />
         <CountdownProvider>
           <Section>
@@ -35,8 +34,8 @@ export default function Home({
             <RightPanel />
           </Section>
         </CountdownProvider>
-        </ChallengesProvider>
-      </Wrapper>
+      </ChallengesProvider>
+    </Wrapper>
   )
 }
 

@@ -1,8 +1,10 @@
+import Cookies from 'js-cookie'
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import challengeData from '../../challenges.json'
+import { LevelUpModal } from '../components'
 import { Challenge } from '../types'
-import Cookies from 'js-cookie'
 
+const EXPCURVERATIO: number = 4
 interface IChallengesProviderProps {
   children: ReactNode
   level: number
@@ -20,6 +22,7 @@ export interface ChallengesContextData {
   levelUp: () => void
   startNewChallenge: () => void
   resetChallenge: () => void
+  closeModal: () => void
 }
 
 export const challengesContext = createContext({} as ChallengesContextData)
@@ -35,8 +38,8 @@ export function ChallengesProvider({
   )
 
   const [activeChallenge, setActiveChallenge] = useState(null)
-  //? Fórmula para definir a dificuldade da curva de  nível
-  const experienceToNextLevel = Math.pow((level + 1) * 2, 2)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const experienceToNextLevel = Math.pow((level + 1) * EXPCURVERATIO, 2)
 
   useEffect(() => {
     Notification.requestPermission()
@@ -50,6 +53,13 @@ export function ChallengesProvider({
 
   function levelUp(levelToUp = 1) {
     setLevel(level + levelToUp)
+    setIsModalOpen(true)
+  }
+
+  function closeModal() {
+    if(!isModalOpen) return
+
+    setIsModalOpen(false)
   }
 
   function startNewChallenge() {
@@ -84,7 +94,7 @@ export function ChallengesProvider({
     let finalExp = currentExp + amount
 
     if (finalExp >= experienceToNextLevel) {
-      let levelsToUp = 1
+      let levelsToUp = 0
       while (finalExp >= experienceToNextLevel) {
         finalExp -= experienceToNextLevel
         setCurrentExp(finalExp)
@@ -109,9 +119,11 @@ export function ChallengesProvider({
         currentExp,
         startNewChallenge,
         resetChallenge,
+        closeModal
       }}
     >
       {children}
+      {isModalOpen && <LevelUpModal closeModal={closeModal} />}
     </challengesContext.Provider>
   )
 }
