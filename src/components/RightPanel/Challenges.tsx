@@ -1,7 +1,11 @@
-import { FC } from 'react'
+import { FC, ReactChild, ReactChildren, ReactNode } from 'react'
 import styled, { StyledFunction } from 'styled-components'
 
-const ChallengeContainer = styled.div`
+interface IChallengeProps {
+  children?: ReactNode
+}
+
+const ChallengeContainer = styled.div<IChallengeProps>`
   height: 100%;
 
   background: white;
@@ -38,7 +42,7 @@ const InactiveChallenge = styled.div`
   }
 `
 
-const ActiveChallenge = styled.div`
+const ActiveChallenge = styled.div<IChallengeProps>`
   height: 100%;
   min-width: 80%;
   display: flex;

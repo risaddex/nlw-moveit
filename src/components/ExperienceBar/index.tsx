@@ -1,18 +1,23 @@
 import styled, { css } from 'styled-components'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { challengesContext } from '../../context/challengesContext'
 
 interface IProgressWidth {
   progress: number
 }
 
 export const ExperienceBar = () => {
-  const [progress, setProgress] = useState(75)
+  const { currentExp, experienceToNextLevel } = useContext(challengesContext)
+
+  const progressPercent = Math.round(currentExp * 100) / experienceToNextLevel
 
   return (
     <StyledHeader>
       <OuterBar>
-        <LoadingBar progress={progress}>
-          <span>50/100 xp</span>
+        <LoadingBar progress={progressPercent}>
+          <span>
+            {currentExp}/{experienceToNextLevel} XP
+          </span>
         </LoadingBar>
       </OuterBar>
     </StyledHeader>
@@ -27,19 +32,20 @@ const StyledHeader = styled.header`
 
 const OuterBar = styled.div`
   flex-grow: 1;
-  border: 1px;
+  border: 1px solid gray;
   margin-top: 0.5rem;
 `
 
 const LoadingBar = styled.div<IProgressWidth>(
   ({ progress }) => css`
     background-color: rgba(16, 185, 129, 1);
-    height: 1.5rem;
     border-radius: 5px;
+    height: 2.5rem;
     width: ${progress}%;
     span {
       position: absolute;
       left: 50%;
+      /* top: 6.25%; */
       transform: translateX(0, 50%);
     }
   `

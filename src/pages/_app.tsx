@@ -2,6 +2,7 @@ import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { ThemeProvider } from 'styled-components'
 import { myTheme } from '../styles/theme'
 import { createGlobalStyle } from 'styled-components'
+import { ChallengesProvider } from '../context/challengesContext'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -28,10 +29,12 @@ export const GlobalStyle = createGlobalStyle`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={myTheme}>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <ChallengesProvider>
+      <ThemeProvider theme={myTheme}>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </ChallengesProvider>
   )
 }
 

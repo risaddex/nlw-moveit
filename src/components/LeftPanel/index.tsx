@@ -1,5 +1,5 @@
 import { Countdown } from '../Countdown'
-import { CompletedChallenges } from './CompletedChallenges'
+import { ProfileInfo } from './CompletedChallenges'
 import { Profile } from './Profile'
 import styled from 'styled-components'
 
@@ -7,7 +7,7 @@ export const LeftPanel = () => {
   return (
     <PanelContainer>
       <Profile />
-      <CompletedChallenges />
+      <ProfileInfo />
       <Countdown />
     </PanelContainer>
   )

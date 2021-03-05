@@ -1,11 +1,15 @@
 import styled from 'styled-components'
+import { useContext } from 'react';
+import { challengesContext } from '../../context/challengesContext';
 
-export const CompletedChallenges = () => (
-  <ChallengeBox>
+export const ProfileInfo = () => {
+  const { completedChallenges} = useContext(challengesContext)
+
+  return (<ChallengeBox>
     <Completed>Completed Challenges</Completed>
-    <Number>25</Number>
-  </ChallengeBox>
-)
+    <Number>{completedChallenges}</Number>
+  </ChallengeBox>)
+}
 
 const ChallengeBox = styled.div`
   padding: 1.25rem;
