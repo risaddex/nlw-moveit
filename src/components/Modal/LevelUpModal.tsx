@@ -2,8 +2,8 @@ import { Modal } from './Modal'
 import { useContext } from 'react';
 import { challengesContext } from '../../context/ChallengesContext';
 
-export const LevelUpModal = ({ closeModal }) => {
-  const { level } = useContext(challengesContext)
+export const LevelUpModal = () => {
+  const { level, closeModal } = useContext(challengesContext)
   return (
     <Modal>
       <Modal.Container>

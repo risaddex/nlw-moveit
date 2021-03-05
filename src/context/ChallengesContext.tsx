@@ -123,7 +123,7 @@ export function ChallengesProvider({
       }}
     >
       {children}
-      {isModalOpen && <LevelUpModal closeModal={closeModal} />}
+      {isModalOpen && <LevelUpModal />}
     </challengesContext.Provider>
   )
 }
