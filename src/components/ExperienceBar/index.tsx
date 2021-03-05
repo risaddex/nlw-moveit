@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { useState, useContext } from 'react'
-import { challengesContext } from '../../context/challengesContext'
+import { challengesContext } from '../../context/ChallengesContext'
 
 interface IProgressWidth {
   progress: number

@@ -5,16 +5,19 @@ import {
   RightPanel,
   Section,
 } from '../components'
+import { CountdownProvider } from '../context/CountdownContext'
 
 export default function Home() {
   return (
     <Wrapper>
       <ExperienceBar />
 
-      <Section>
-        <LeftPanel />
-        <RightPanel />
-      </Section>
+      <CountdownProvider>
+        <Section>
+          <LeftPanel />
+          <RightPanel />
+        </Section>
+      </CountdownProvider>
     </Wrapper>
   )
 }

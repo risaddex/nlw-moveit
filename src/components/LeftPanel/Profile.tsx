@@ -1,17 +1,21 @@
 import styled from 'styled-components'
+import { useContext } from 'react';
+import { challengesContext } from '../../context/ChallengesContext';
 
-export const Profile = () => (
+export const Profile = () => {
+  const { level} = useContext(challengesContext)
+   return (
   <Container>
     <img src="https://github.com/risaddex.png" alt="me" />
     <CardContainer>
       <strong>Danilo Romano</strong>
       <LevelContainer>
         <img src="icons/level.svg" alt="level" />
-        <p>Level 123 </p>
+        <p>Level {level} </p>
       </LevelContainer>
     </CardContainer>
   </Container>
-)
+)}
 
 const Container = styled.div`
   display: flex;

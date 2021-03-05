@@ -1,46 +1,21 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { ActiveButton } from '../Buttons'
-import { Clock } from './Clock'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { Button } from '../Buttons'
-import { challengesContext } from '../../context/challengesContext';
-
-let countdownTimeout: NodeJS.Timeout
+import { CountdownContext } from '../../context/CountdownContext'
+import { ActiveButton, Button } from '../Buttons'
+import { Clock } from './Clock'
 
 export const Countdown = () => {
-  const { startNewChallenge } = useContext(challengesContext)
-
-  const [time, setTime] = useState(0.1 * 60)
-  const [isActive, setIsActive] = useState(false)
-  const [hasFinished, setHasFinished] = useState(false)
-
-  const minutes = Math.floor(time / 60)
-  const seconds = time % 60
+  const {
+    hasFinished,
+    isActive,
+    minutes,
+    resetCountdown,
+    seconds,
+    startCountdown,
+  } = useContext(CountdownContext)
 
   const [minLeft, minRight] = String(minutes).padStart(2, '0').split('')
   const [secLeft, secRight] = String(seconds).padStart(2, '0').split('')
-
-  useEffect(() => {
-    if (time > 0 && isActive) {
-      countdownTimeout = setTimeout(() => {
-        setTime(time - 1)
-      }, 1000)
-    } else if (isActive && time === 0) {
-      setHasFinished(true)
-      setIsActive(false)
-      startNewChallenge()
-    }
-  }, [time, isActive])
-
-  const toggleCountdown = () => {
-    setIsActive(true)
-  }
-
-  const resetCountdown = () => {
-    setTime(0.1 * 60)
-    clearTimeout(countdownTimeout)
-    setIsActive(false)
-  }
 
   return (
     <>
@@ -58,7 +33,7 @@ export const Countdown = () => {
       ) : (
         <ActiveButton
           type="button"
-          onClick={isActive ? resetCountdown : toggleCountdown}
+          onClick={isActive ? resetCountdown : startCountdown}
           isActive={isActive}
         >
           {isActive ? 'Abandonar Ciclo' : 'Iniciar um Ciclo'}

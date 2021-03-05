@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { useContext } from 'react';
-import { challengesContext } from '../../context/challengesContext';
+import { challengesContext } from '../../context/ChallengesContext';
 
 export const ProfileInfo = () => {
-  const { completedChallenges} = useContext(challengesContext)
+  const { challengesCompleted } = useContext(challengesContext)
 
   return (<ChallengeBox>
     <Completed>Completed Challenges</Completed>
-    <Number>{completedChallenges}</Number>
+    <Number>{challengesCompleted}</Number>
   </ChallengeBox>)
 }
 
