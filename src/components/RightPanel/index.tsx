@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { ChalllengeBox } from './ChallengeBox';
 
 
 export const RightPanel = () => {
   return (
     <StyledRightPanel>
-      vazio
+      <ChalllengeBox />
     </StyledRightPanel>
   )
 }

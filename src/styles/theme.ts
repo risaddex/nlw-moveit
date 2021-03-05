@@ -10,7 +10,9 @@ const myTheme: DefaultTheme = {
     darkBlue: 'rgba(30, 64, 175, 1)',
     red: 'rgb(243, 21, 21)',
     title: 'rgb(50, 50, 50)',
-    text: 'rgb(25, 25, 25)'
+    text: 'rgb(25, 25, 25)',
+    success: 'rgb(50,200,50)',
+    danger: 'rgb(220,50,50)'
   },
 
   shadows: {
