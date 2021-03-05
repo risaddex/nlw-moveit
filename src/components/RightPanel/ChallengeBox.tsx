@@ -24,8 +24,6 @@ export const ChalllengeBox = () => {
     resetCountdown()
   }
 
-  console.log(activeChallenge)
-
   return (
     <ChallengeContainer>
       {activeChallenge ? (

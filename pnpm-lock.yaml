@@ -1,9 +1,11 @@
 dependencies:
+  js-cookie: 2.2.1
   next: 10.0.7_24b12e544cf6ca996debdbfad8b93c93
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
   styled-components: 5.2.1_react-dom@17.0.1+react@17.0.1
 devDependencies:
+  '@types/js-cookie': 2.2.6
   '@types/node': 14.14.31
   '@types/react': 17.0.2
   '@types/styled-components': 5.1.7
@@ -221,6 +223,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  /@types/js-cookie/2.2.6:
+    dev: true
+    resolution:
+      integrity: sha512-+oY0FDTO2GYKEV0YPvSshGq9t7YozVkgvXLty7zogQNuCxBhT9/3INX9Q7H1aRZ4SUDRXAKlJuA4EA5nTt7SNw==
   /@types/node/14.14.31:
     dev: true
     resolution:
@@ -1096,6 +1102,10 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-51PE4haMSXcHohnSMdM42anbvZANYTqMrr52tVKPqqsPJMzoP6FYYDVqahX/HrAoKEKz3uUPzSvKs9A3qR4iVw==
+  /js-cookie/2.2.1:
+    dev: false
+    resolution:
+      integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
   /js-tokens/4.0.0:
     dev: false
     resolution:
@@ -2235,10 +2245,12 @@ packages:
     resolution:
       integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 specifiers:
+  '@types/js-cookie': ^2.2.6
   '@types/node': ^14.14.31
   '@types/react': ^17.0.2
   '@types/styled-components': ^5.1.7
   babel-plugin-styled-components: ^1.12.0
+  js-cookie: ^2.2.1
   next: 10.0.7
   react: 17.0.1
   react-dom: 17.0.1
