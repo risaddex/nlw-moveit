@@ -1,9 +1,13 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import challengeData from '../../challenges.json'
 import { Challenge } from '../types'
+import Cookies from 'js-cookie'
 
 interface IChallengesProviderProps {
-  children?: ReactNode
+  children: ReactNode
+  level: number
+  currentExp: number
+  challengesCompleted: number
 }
 
 export interface ChallengesContextData {
@@ -20,21 +24,32 @@ export interface ChallengesContextData {
 
 export const challengesContext = createContext({} as ChallengesContextData)
 
-export function ChallengesProvider({ children }: IChallengesProviderProps) {
-  const [level, setLevel] = useState(1)
-  const [currentExp, setCurrentExp] = useState(0)
-  const [challengesCompleted, setChallengesCompleted] = useState(0)
+export function ChallengesProvider({
+  children,
+  ...rest
+}: IChallengesProviderProps) {
+  const [level, setLevel] = useState(rest.level ?? 1)
+  const [currentExp, setCurrentExp] = useState(rest.currentExp ?? 0)
+  const [challengesCompleted, setChallengesCompleted] = useState(
+    rest.challengesCompleted ?? 0
+  )
 
   const [activeChallenge, setActiveChallenge] = useState(null)
-
-  const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
+  //? Fórmula para definir a dificuldade da curva de  nível
+  const experienceToNextLevel = Math.pow((level + 1) * 2, 2)
 
   useEffect(() => {
     Notification.requestPermission()
   }, [])
 
-  function levelUp() {
-    setLevel(level + 1)
+  useEffect(() => {
+    Cookies.set('level', String(level))
+    Cookies.set('currentExp', String(currentExp))
+    Cookies.set('challengesCompleted', String(challengesCompleted))
+  }, [level, currentExp, challengesCompleted])
+
+  function levelUp(levelToUp = 1) {
+    setLevel(level + levelToUp)
   }
 
   function startNewChallenge() {
@@ -47,9 +62,9 @@ export function ChallengesProvider({ children }: IChallengesProviderProps) {
 
     new Audio('/notification.mp3').play()
 
-    if (Notification.permission === 'granted')  {
+    if (Notification.permission === 'granted') {
       new Notification('Novo desafio !', {
-        body: `Valendo ${challenge.amount}XP`
+        body: `Valendo ${challenge.amount}XP`,
       })
     }
   }
@@ -59,6 +74,7 @@ export function ChallengesProvider({ children }: IChallengesProviderProps) {
   }
 
   function completeChallenge() {
+    debugger
     if (!activeChallenge) {
       return
     }
@@ -68,10 +84,14 @@ export function ChallengesProvider({ children }: IChallengesProviderProps) {
     let finalExp = currentExp + amount
 
     if (finalExp >= experienceToNextLevel) {
-      finalExp -= experienceToNextLevel
-      levelUp()
+      let levelsToUp = 1
+      while (finalExp >= experienceToNextLevel) {
+        finalExp -= experienceToNextLevel
+        setCurrentExp(finalExp)
+        levelsToUp++
+      }
+      levelUp(levelsToUp)
     }
-
     setCurrentExp(finalExp)
     setChallengesCompleted(challengesCompleted + 1)
     setActiveChallenge(null)
