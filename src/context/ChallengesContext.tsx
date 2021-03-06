@@ -7,10 +7,10 @@ import { fetchGithubUserData } from '../api'
 
 const EXPCURVERATIO: number = 4
 interface IChallengesProviderProps {
-  children?: ReactNode
-  level: number
-  currentExp: number
-  challengesCompleted: number
+  children: ReactNode
+  level?: number
+  currentExp?: number
+  challengesCompleted?: number
 }
 
 export interface ChallengesContextData {

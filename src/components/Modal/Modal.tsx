@@ -14,7 +14,7 @@ export const Modal = styled.div`
 
 `
 
-Modal.Container = styled.div`
+export const ModalContainer = styled.div`
   background: ${({ theme }) => theme.colors.white};
   width: 100%;
   max-width: 400px;
@@ -25,25 +25,25 @@ Modal.Container = styled.div`
   position: relative;
   
 `
-Modal.Header = styled.header`
+export const ModalHeader = styled.header`
   font-size: 8.75rem;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.primary};
   background: url('/icons/levelup.svg') no-repeat center;
   background-size: contain;
 `
-Modal.Title = styled.strong`
+export const ModalTitle = styled.strong`
   font-size: 2.5rem;
   color: ${({ theme }) => theme.colors.title};
   
 `
-Modal.Text = styled.p`
+export const ModalText = styled.p`
   font-size: 1.25rem;
   color: ${({ theme }) => theme.colors.text};
   margin-top: 0.25rem;
   
 `
-Modal.Button = styled.button`
+export const ModalButton = styled.button`
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;

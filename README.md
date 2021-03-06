@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="move.it" title="move.it" src=".github/logo.png" />
+  <img alt="move.it" title="move.it" src="./public/logo.svg" />
 </h1>
 
 <p align="center">
@@ -18,9 +18,7 @@
 
 <br>
 
-<p align="center">
-  <img alt="Happy" src=".github/moveit.png" width="100%">
-</p>
+<br>
 
 ## ✨ Tecnologias
 
@@ -29,6 +27,13 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React](https://reactjs.org)
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+
+Tecnologias adicionais que utilizei por conta própria:
+ <ul>
+  <li style="list-style-type: '+'; color: green;">
+    <a style="padding-left: 5px;" href="https://styled-components.com/)">Styled Components</a>
+  </li>
+ </ul>
 
 ## 💻 Projeto
 
@@ -41,8 +46,8 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 ## 🚀 Como executar
 
 - Clone o repositório
-- Instale as dependências com `yarn`
-- Inicie o servidor com `yarn dev`
+- Instale as dependências com `yarn` ou `npm i`
+- Inicie o servidor com `yarn dev` ou `npm run dev`
 
 Agora você pode acessar [`localhost:3000`](http://localhost:3000) do seu navegador.
 
