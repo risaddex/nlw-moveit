@@ -5,19 +5,20 @@ const myTheme: DefaultTheme = {
   borderRadius: '5px',
 
   colors: {
-    white: '#fff',
-    blue: 'rgba(59, 130, 246,1)',
-    darkBlue: 'rgba(30, 64, 175, 1)',
-    red: 'rgb(243, 21, 21)',
-    title: 'rgb(50, 50, 50)',
-    text: 'rgb(25, 25, 25)',
-    success: 'rgb(50,200,50)',
-    danger: 'rgb(220,50,50)'
+    white: '#FFF',
+    primary: '#5965E0',
+    darkPrimary: '#4953B8',
+    title: '#2E384D',
+    gray: '#DCDDE0',
+    text: '#666666',
+    success: '#4CD62B',
+    danger: '#E83F5B',
+    background: '#F2F3F5',
   },
 
   shadows: {
     main: '0 0 60px rgba(0, 0, 0, 0.5)',
-  }
+  },
 }
 
 export { myTheme }

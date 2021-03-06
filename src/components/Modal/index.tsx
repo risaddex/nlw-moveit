@@ -1,6 +1,6 @@
 import { Modal } from './Modal'
-import { useContext } from 'react';
-import { challengesContext } from '../../context/ChallengesContext';
+import { useContext } from 'react'
+import { challengesContext } from '../../context/ChallengesContext'
 
 export const LevelUpModal = () => {
   const { level, closeModal } = useContext(challengesContext)

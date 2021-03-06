@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { Button } from '../Buttons/Button';
 
-const Modal = styled.div`
+export const Modal = styled.div`
   background: rgba(242, 243, 245, 0.8);
   position: fixed;
   top: 0;
@@ -29,7 +28,7 @@ Modal.Container = styled.div`
 Modal.Header = styled.header`
   font-size: 8.75rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.primary};
   background: url('/icons/levelup.svg') no-repeat center;
   background-size: contain;
 `
@@ -52,4 +51,3 @@ Modal.Button = styled.button`
   border: 0;
   font-size: 0; //! Nice hack :)
 `
-export {Modal}

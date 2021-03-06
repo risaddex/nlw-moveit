@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const StyledSection = styled.section`
+export const StyledSection = styled.section`
   flex: 1;
-
+  min-width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6.25rem;

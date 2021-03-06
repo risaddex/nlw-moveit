@@ -1,5 +1,5 @@
-import { FC, ReactChild, ReactChildren, ReactNode } from 'react'
-import styled, { StyledFunction } from 'styled-components'
+import { ReactNode } from 'react'
+import styled from 'styled-components'
 
 interface IChallengeProps {
   children?: ReactNode
@@ -49,7 +49,7 @@ const ActiveChallenge = styled.div<IChallengeProps>`
   flex-direction: column;
 `
 ActiveChallenge.Header = styled.header`
-  color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.primary};
   font-weight: 600;
   font-size: 1.25rem;
   padding: 0 2rem 1.5rem;
