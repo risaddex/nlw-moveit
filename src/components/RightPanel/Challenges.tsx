@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
 
-interface IChallengeProps {
+export interface IChallengeProps {
   children?: ReactNode
 }
 
-const ChallengeContainer = styled.div<IChallengeProps>`
+export const ChallengeContainer = styled.div<IChallengeProps>`
   height: 100%;
 
   background: white;
@@ -21,7 +21,7 @@ const ChallengeContainer = styled.div<IChallengeProps>`
   text-align: center;
 `
 
-const InactiveChallenge = styled.div`
+export const InactiveChallenge = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,25 +42,25 @@ const InactiveChallenge = styled.div`
   }
 `
 
-const ActiveChallenge = styled.div<IChallengeProps>`
+export const ActiveChallenge = styled.div<IChallengeProps>`
   height: 100%;
   min-width: 80%;
   display: flex;
   flex-direction: column;
 `
-ActiveChallenge.Header = styled.header`
+export const StyledHeader = styled.header`
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 600;
   font-size: 1.25rem;
   padding: 0 2rem 1.5rem;
   border-bottom: 1px solid ${({ theme }) => theme.colors.title};
 `
-ActiveChallenge.Footer = styled.footer`
+export const StyledFooter= styled.footer`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 `
-ActiveChallenge.Main = styled.main`
+export const StyledMain = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -78,4 +78,3 @@ ActiveChallenge.Main = styled.main`
     line-height: 1.5;
   }
 `
-export { ChallengeContainer, ActiveChallenge, InactiveChallenge }

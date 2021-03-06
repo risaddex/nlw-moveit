@@ -1,12 +1,12 @@
-import { useContext } from 'react'
-import { ChallengeButton } from '../Buttons/ChallengeButton'
-import { challengesContext } from '../../context/ChallengesContext'
-import { CountdownContext } from '../../context/CountdownContext'
+import { useContext } from 'react';
+import { challengesContext } from '../../context/ChallengesContext';
+import { CountdownContext } from '../../context/CountdownContext';
+import { ChallengeButton } from '../Buttons/ChallengeButton';
 import {
   ActiveChallenge as Active,
   ChallengeContainer,
-  InactiveChallenge as Inactive,
-} from './Challenges'
+  InactiveChallenge as Inactive, StyledFooter, StyledHeader, StyledMain
+} from './Challenges';
 
 export const ChalllengeBox = () => {
   const { activeChallenge, resetChallenge, completeChallenge } = useContext(
@@ -28,20 +28,20 @@ export const ChalllengeBox = () => {
     <ChallengeContainer>
       {activeChallenge ? (
         <Active>
-          <Active.Header>Ganhe {activeChallenge.amount} xp</Active.Header>
-          <Active.Main>
+          <StyledHeader>Ganhe {activeChallenge.amount} xp</StyledHeader>
+          <StyledMain>
             <img src={`icons/${activeChallenge.type}.svg`} alt="Body Icons" />
             <strong>Novo desafio</strong>
             <p>{activeChallenge.description}</p>
-          </Active.Main>
-          <Active.Footer>
+          </StyledMain>
+          <StyledFooter>
             <ChallengeButton onClick={handleChallengeFailed}>
               Falhei
             </ChallengeButton>
             <ChallengeButton onClick={handleChallengeSucceeded} success>
               Completei
             </ChallengeButton>
-          </Active.Footer>
+          </StyledFooter>
         </Active>
       ) : (
         <Inactive>

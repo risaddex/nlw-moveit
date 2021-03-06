@@ -51,7 +51,7 @@ const StyledForm = styled.div`
   cursor: default;
 `
 
-const FormHeader = styled(Form.Header)`
+const FormHeader = styled.header`
   flex: 1;
   border: none;
   background: url('/logo.svg') no-repeat;
