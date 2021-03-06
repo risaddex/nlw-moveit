@@ -1,6 +1,10 @@
 import { User } from './types';
 
-export const fetchGithubUserData: (user: string) => Promise<User> = async (user) => {
+export const fetchGithubUserData: (user: string | string[]) => Promise<User> = async (user) => {
+  if (typeof user === 'object') {
+    user = user.slice(0, 1)
+  }
+  
   const options = {
     headers: {
       Accept: 'application/vnd.github.v3+json',

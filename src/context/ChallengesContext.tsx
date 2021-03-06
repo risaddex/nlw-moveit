@@ -4,13 +4,15 @@ import challengeData from '../../challenges.json'
 import { LevelUpModal } from '../components'
 import { Challenge, User } from '../types'
 import { fetchGithubUserData } from '../api'
+import { userInfo } from 'node:os'
 
 const EXPCURVERATIO: number = 4
 interface IChallengesProviderProps {
   children: ReactNode
-  level?: number
-  currentExp?: number
-  challengesCompleted?: number
+  userData: User
+  level: number
+  currentExp: number
+  challengesCompleted: number
 }
 
 export interface ChallengesContextData {
@@ -24,7 +26,7 @@ export interface ChallengesContextData {
   startNewChallenge: () => void
   resetChallenge: () => void
   closeModal: () => void
-  fetchUserByName: (name: string) => Promise<User>
+  currentUser: User
 }
 
 export const challengesContext = createContext({} as ChallengesContextData)
@@ -33,12 +35,11 @@ export function ChallengesProvider({
   children,
   ...rest
 }: IChallengesProviderProps) {
+  const [currentUser, setCurrentUser] = useState(rest.userData ?? null)
   const [level, setLevel] = useState(rest.level ?? 1)
   const [currentExp, setCurrentExp] = useState(rest.currentExp ?? 0)
-  const [challengesCompleted, setChallengesCompleted] = useState(
-    rest.challengesCompleted ?? 0
-  )
-
+  const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0)
+  
   const [activeChallenge, setActiveChallenge] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const experienceToNextLevel = Math.pow((level + 1) * EXPCURVERATIO, 2)
@@ -48,9 +49,9 @@ export function ChallengesProvider({
   }, [])
 
   useEffect(() => {
-    Cookies.set('level', String(level))
-    Cookies.set('currentExp', String(currentExp))
-    Cookies.set('challengesCompleted', String(challengesCompleted))
+    Cookies.set(`${currentUser.id}_level`, String(level))
+    Cookies.set(`${currentUser.id}_currentExp`, String(currentExp))
+    Cookies.set(`${currentUser.id}_challengesCompleted`, String(challengesCompleted))
   }, [level, currentExp, challengesCompleted])
 
   function levelUp(levelToUp = 1) {
@@ -85,16 +86,6 @@ export function ChallengesProvider({
     setActiveChallenge(null)
   }
 
-  async function fetchUserByName(user: string): Promise<User> {
-    console.log('carregando')
-    const userData = await fetchGithubUserData(user)
-
-    console.log('middleware')
-    
-    console.log(userData)
-    return userData
-  }
-
   function completeChallenge() {
     debugger
     if (!activeChallenge) {
@@ -122,17 +113,17 @@ export function ChallengesProvider({
   return (
     <challengesContext.Provider
       value={{
+        currentUser,
+        currentExp,
+        level,
         experienceToNextLevel,
         activeChallenge,
-        level,
-        levelUp,
         challengesCompleted,
+        levelUp,
         completeChallenge,
-        currentExp,
         startNewChallenge,
         resetChallenge,
         closeModal,
-        fetchUserByName,
       }}
     >
       {children}
