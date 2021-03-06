@@ -13,15 +13,15 @@ export const ExperienceBar = () => {
 
   return (
     <StyledHeader>
-      <span>0 xp</span>
+      <span>0 EXP</span>
       <OuterBar>
         <LoadingBar progress={progressPercent}>
           <span>
-            {currentExp}/{experienceToNextLevel} XP
+            {currentExp} / {experienceToNextLevel} EXP
           </span>
         </LoadingBar>
       </OuterBar>
-      <span>1000 exp</span>
+      <span>{experienceToNextLevel} EXP</span>
     </StyledHeader>
   )
 }
@@ -31,8 +31,8 @@ const StyledHeader = styled.header`
   width: 100%;
   justify-content: center;
   align-items: center;
-  
-  >span {
+
+  > span {
     display: flex;
     padding: 0 0.25rem;
     align-self: center;
@@ -51,9 +51,11 @@ const LoadingBar = styled.div<IProgressWidth>(
     border-radius: 5px;
     height: 0.5rem;
     width: ${progress}%;
+
     span {
       position: absolute;
       left: 50%;
+      top: 3.5rem;
       transform: translateX(0, 50%);
     }
   `
