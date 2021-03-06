@@ -15,7 +15,7 @@ export const ExperienceBar = () => {
     <StyledHeader>
       <span>0 EXP</span>
       <OuterBar>
-        <LoadingBar progress={progressPercent}>
+        <LoadingBar progress={progressPercent ?? 0}>
           <span>
             {currentExp} / {experienceToNextLevel} EXP
           </span>
