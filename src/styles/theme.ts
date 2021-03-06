@@ -19,6 +19,9 @@ const myTheme: DefaultTheme = {
   shadows: {
     main: '0 0 60px rgba(0, 0, 0, 0.5)',
   },
+  gradients: {
+    dark: 'linear-gradient(90deg, rgba(0, 0, 0, 0.116),rgba(0, 0, 0, 0.05))'
+  }
 }
 
 export { myTheme }

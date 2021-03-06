@@ -2,11 +2,12 @@ import Cookies from 'js-cookie'
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import challengeData from '../../challenges.json'
 import { LevelUpModal } from '../components'
-import { Challenge } from '../types'
+import { Challenge, User } from '../types'
+import { fetchGithubUserData } from '../api'
 
 const EXPCURVERATIO: number = 4
 interface IChallengesProviderProps {
-  children: ReactNode
+  children?: ReactNode
   level: number
   currentExp: number
   challengesCompleted: number
@@ -23,6 +24,7 @@ export interface ChallengesContextData {
   startNewChallenge: () => void
   resetChallenge: () => void
   closeModal: () => void
+  fetchUserByName: (name: string) => Promise<User>
 }
 
 export const challengesContext = createContext({} as ChallengesContextData)
@@ -57,7 +59,7 @@ export function ChallengesProvider({
   }
 
   function closeModal() {
-    if(!isModalOpen) return
+    if (!isModalOpen) return
 
     setIsModalOpen(false)
   }
@@ -81,6 +83,16 @@ export function ChallengesProvider({
 
   function resetChallenge() {
     setActiveChallenge(null)
+  }
+
+  async function fetchUserByName(user: string): Promise<User> {
+    console.log('carregando')
+    const userData = await fetchGithubUserData(user)
+
+    console.log('middleware')
+    
+    console.log(userData)
+    return userData
   }
 
   function completeChallenge() {
@@ -119,7 +131,8 @@ export function ChallengesProvider({
         currentExp,
         startNewChallenge,
         resetChallenge,
-        closeModal
+        closeModal,
+        fetchUserByName,
       }}
     >
       {children}

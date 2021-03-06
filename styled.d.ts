@@ -8,5 +8,6 @@ declare module 'styled-components' {
     colors: Object<string>
 
     shadows: Object<string>
+    gradients: Object<string>
   }
 }

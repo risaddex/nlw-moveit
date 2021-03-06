@@ -1,5 +1,42 @@
 import styled from 'styled-components'
 import { ActiveChallenge as Form } from '../RightPanel/Challenges'
+import { useState, useContext } from 'react';
+import { challengesContext } from '../../context/ChallengesContext';
+
+export const LoginForm = () => {
+  const { fetchUserByName } = useContext(challengesContext)
+  
+  const [name, setName] = useState('')
+
+  const fetchUserOnClick = () => {
+    fetchUserByName(name)
+  }
+
+  return (
+    <StyledForm>
+      <Form>
+        <FormHeader />
+        <FormMain>
+          <div>
+            <h3>{`Bem vindo`}</h3>
+          </div>
+          <div>
+            <img src="github.svg" alt="github logo" />
+            <p>{`Faça login com seu github para começar`}</p>
+          </div>
+        </FormMain>
+        <FormFooter onSubmit={(e) => e.preventDefault()}>
+          <input
+            onChange={(e) => setName(e.target.value)}
+            name="userName"
+            placeholder={`Digite seu username`}
+          />
+          <button disabled={name.length === 0} type="submit" onClick={fetchUserOnClick} />
+        </FormFooter>
+      </Form>
+    </StyledForm>
+  )
+}
 
 const StyledForm = styled.div`
   grid-column: 2;
@@ -11,7 +48,9 @@ const StyledForm = styled.div`
   height: 60vh;
   min-height: 400px;
   margin-right: 3rem;
+  cursor: default;
 `
+
 const FormHeader = styled(Form.Header)`
   flex: 1;
   border: none;
@@ -21,11 +60,11 @@ const FormHeader = styled(Form.Header)`
 `
 
 const FormMain = styled.main`
-  flex: 2;
+  flex: 1;
   display: grid;
   grid-template-rows: 1fr 1fr;
   background-color: ${({ theme }) => theme.colors.primary};
-  
+
   gap: 1rem;
   align-items: center;
   /* margin-right: 2.5rem; */
@@ -51,27 +90,30 @@ const FormMain = styled.main`
       text-align: left;
       font-size: 1.25rem;
       color: ${({ theme }) => theme.colors.gray};
-      
     }
   }
 `
-const FormFooter = styled.footer`
+
+const FormFooter = styled.form`
   flex: 1;
   display: flex;
+  max-height: 20%;
 
   input {
     flex: 1;
-    text-align: center;
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.116),
-      rgba(0, 0, 0, 0.05)
-    );
-    /* outline: none; */
-    line-height: 3rem;
+
+    background: ${({ theme }) => theme.gradients.dark};
     color: ${({ theme }) => theme.colors.gray};
+
     font-size: 1rem;
+    padding: 0 1.25rem;
+
+    outline: none;
     border: none;
+    border-radius: 5px 0 0 5px;
+
+    &:focus {
+    }
 
     ::placeholder {
       color: ${({ theme }) => theme.colors.gray};
@@ -79,29 +121,27 @@ const FormFooter = styled.footer`
   }
 
   button {
-    min-width: 20%;
+    min-width: 18%;
+
+    background: url('/icons/arrow.svg') no-repeat;
+    background-position: center;
+    background-color: ${({ theme }) => theme.colors.darkPrimary};
+
+    outline: none;
+    border: none;
+    transition: background-color 0.3s;
+    border-radius: 0 5px 5px 0;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.success};
+      cursor: pointer;
+    }
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.danger};
+      }
+    }
   }
 `
-
-export const LoginForm = () => {
-  return (
-    <StyledForm>
-      <Form>
-        <FormHeader />
-        <FormMain>
-          <div>
-            <h3>Bem vindo</h3>
-          </div>
-          <div>
-            <img src="github.svg" alt="github logo" />
-            <p>Faça login com seu github para começar</p>
-          </div>
-        </FormMain>
-        <FormFooter>
-          <input type="text" placeholder={`digite seu username`}/>
-          <button type="submit" />
-        </FormFooter>
-      </Form>
-    </StyledForm>
-  )
-}
