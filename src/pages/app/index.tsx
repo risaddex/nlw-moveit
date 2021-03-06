@@ -50,7 +50,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   
   console.log('carregando')
  
-    const userData = await fetchGithubUserData(ctx.query.user)
+  const userData = await fetchGithubUserData(ctx.query.user)
 
   const cookies = Object.keys(ctx.req.cookies).find((item) =>
     item.startsWith(`${userData.id}_`)
@@ -69,15 +69,16 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   console.log(cookies)
   const { level, currentExp, challengesCompleted } = cookies
-
-   if (/\W/g.test(ctx.query.user)) {
-     return {
-       redirect: {
-         destination: '/',
-         permanent: false
-       }
-     }
-   }
+  
+  //? handle manual querying from browser
+  //  if (/\W/.test(ctx.query.user)) {
+  //    return {
+  //      redirect: {
+  //        destination: '/',
+  //        permanent: false
+  //      }
+  //    }
+  //  }
 
   return {
     props: {
