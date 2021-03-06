@@ -29,7 +29,7 @@ export const Countdown = () => {
       </CountdownContainer>
 
       {hasFinished ? (
-        <Button disabled>Ganho mizeravi</Button>
+        <Button disabled>Ciclo encerrado</Button>
       ) : (
         <ActiveButton
           type="button"

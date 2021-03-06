@@ -1,16 +1,20 @@
-import styled from 'styled-components'
-import { ActiveChallenge as Form } from '../RightPanel/Challenges'
-import { useState, useContext } from 'react';
-import { challengesContext } from '../../context/ChallengesContext';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import styled from 'styled-components';
+import { fetchGithubUserData } from '../../api';
+import { User } from '../../types';
+import { ActiveChallenge as Form } from '../RightPanel/Challenges';
 
 export const LoginForm = () => {
-  const { fetchUserByName } = useContext(challengesContext)
+  const router = useRouter()
   
   const [name, setName] = useState('')
 
-  const fetchUserOnClick = () => {
-    fetchUserByName(name)
-  }
+   const handleClick = () => {
+
+    router.push(`/app?user=${name}`)
+     
+   }
 
   return (
     <StyledForm>
@@ -31,7 +35,7 @@ export const LoginForm = () => {
             name="userName"
             placeholder={`Digite seu username`}
           />
-          <button disabled={name.length === 0} type="submit" onClick={fetchUserOnClick} />
+          <button disabled={name.length === 0} type="submit" onClick={handleClick} />
         </FormFooter>
       </Form>
     </StyledForm>

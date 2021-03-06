@@ -3,12 +3,13 @@ import { useContext } from 'react';
 import { challengesContext } from '../../context/ChallengesContext';
 
 export const Profile = () => {
-  const { level} = useContext(challengesContext)
+  const { level, currentUser } = useContext(challengesContext)
+
    return (
   <Container>
-    <img src="https://github.com/risaddex.png" alt="me" />
+    <img src={currentUser.avatar} alt="user avatar" />
     <CardContainer>
-      <strong>Danilo Romano</strong>
+       <strong>{currentUser.name}</strong>
       <LevelContainer>
         <img src="icons/level.svg" alt="level" />
         <p>Level {level} </p>
