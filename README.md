@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="move.it" title="move.it" src="/logo.png" />
+  <img alt="move.it" title="move.it" src="/logo.svg" />
 </h1>
 
 <p align="center">
@@ -19,7 +19,7 @@
 <br>
 
 <p align="center">
-  <img alt="Happy" src="favicon.png" width="100%">
+  <img alt="Happy" src="/icons/favicon.png" width="100%">
 </p>
 
 ## ✨ Tecnologias
