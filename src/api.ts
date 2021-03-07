@@ -11,20 +11,13 @@ export const fetchGithubUserData: (user: string | string[]) => Promise<User> = a
     },
   }
 
-  let response
+
   const res = await fetch(`https://api.github.com/users/${user}`, options)
-    .then((res) => {
-      if (res.ok) {
-        response = res.json()
-      }
+  if (!res.ok) {
+    throw new Error("Erro ao buscar dados no servidor")
+  }
 
-      throw new Error('Failed on retrieve data from server')
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-
-  const { login, twitter_username, name, id, avatar_url } = await response.json()
+  const { login, twitter_username, name, id, avatar_url } = await res.json()
 
   return {
     username: login,
