@@ -1,11 +1,16 @@
 import { GetServerSideProps } from 'next'
+import { fetchGithubUserData } from '../../api'
 import {
-  Wrapper,
   ExperienceBar,
   LeftPanel,
   RightPanel,
   Section,
+  Wrapper,
 } from '../../components'
+import { ChallengesProvider } from '../../context/ChallengesContext'
+import { CountdownProvider } from '../../context/CountdownContext'
+import { User } from '../../types'
+import { Sidebar } from '../../components/Wrapper/Sidebar';
 
 type HomeProps = {
   user: User
@@ -13,11 +18,6 @@ type HomeProps = {
   currentExp: number
   challengesCompleted: number
 }
-import { CountdownProvider } from '../../context/CountdownContext'
-import { ChallengesProvider } from '../../context/ChallengesContext'
-import { User } from '../../types'
-import { fetchGithubUserData } from '../../api'
-import { Router } from 'next/router';
 
 export default function App({
   user,
@@ -25,31 +25,32 @@ export default function App({
   currentExp,
   challengesCompleted,
 }: HomeProps) {
-  
   return (
-    <Wrapper>
-      <ChallengesProvider
-        userData={user}
-        level={level}
-        currentExp={currentExp}
-        challengesCompleted={challengesCompleted}
-      >
-        <ExperienceBar />
-        <CountdownProvider>
-          <Section>
-            <LeftPanel />
-            <RightPanel />
-          </Section>
-        </CountdownProvider>
-      </ChallengesProvider>
-    </Wrapper>
+    <>
+      <Sidebar />
+      <Wrapper>
+        <ChallengesProvider
+          userData={user}
+          level={level}
+          currentExp={currentExp}
+          challengesCompleted={challengesCompleted}
+        >
+          <ExperienceBar />
+          <CountdownProvider>
+            <Section>
+              <LeftPanel />
+              <RightPanel />
+            </Section>
+          </CountdownProvider>
+        </ChallengesProvider>
+      </Wrapper>
+    </>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  
   console.log('carregando')
- 
+
   const userData = await fetchGithubUserData(ctx.query.user)
 
   const cookies = Object.keys(ctx.req.cookies).find((item) =>
@@ -69,7 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   console.log(cookies)
   const { level, currentExp, challengesCompleted } = cookies
-  
+
   //? handle manual querying from browser
   //  if (/\W/.test(ctx.query.user)) {
   //    return {
