@@ -25,6 +25,7 @@ export const InactiveChallenge = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: ${({ theme }) => theme.colors.text};
 
   strong {
     font-size: 1.5rem;
@@ -34,8 +35,9 @@ export const InactiveChallenge = styled.div`
 
   > div {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     line-height: 1.4;
     max-width: 78%;
     margin-top: 3rem;

@@ -8,6 +8,8 @@ import {
 import { challengesContext } from './ChallengesContext'
 
 interface CountdownContextData {
+  time: number
+  DEFAULT_TIME: number
   minutes: number
   seconds: number
   hasFinished: boolean
@@ -21,13 +23,13 @@ interface CountdownProviderProps {
 }
 
 let countdownTimeout: NodeJS.Timeout
+// PADRÂO é 25 MINUTOS
+const DEFAULT_TIME = 0.5 * 60
 
 export const CountdownContext = createContext({} as CountdownContextData)
-
 export const CountdownProvider = ({ children }: CountdownProviderProps) => {
   const { startNewChallenge } = useContext(challengesContext)
-
-  const [time, setTime] = useState(0.1 * 60)
+  const [time, setTime] = useState(DEFAULT_TIME)
   const [isActive, setIsActive] = useState(false)
   const [hasFinished, setHasFinished] = useState(false)
 
@@ -51,7 +53,7 @@ export const CountdownProvider = ({ children }: CountdownProviderProps) => {
   }
 
   const resetCountdown = () => {
-    setTime(0.1 * 60)
+    setTime(DEFAULT_TIME)
     clearTimeout(countdownTimeout)
     setIsActive(false)
     setHasFinished(false)
@@ -60,6 +62,8 @@ export const CountdownProvider = ({ children }: CountdownProviderProps) => {
   return (
     <CountdownContext.Provider
       value={{
+        time,
+        DEFAULT_TIME,
         minutes,
         seconds,
         hasFinished,

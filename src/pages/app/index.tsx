@@ -27,7 +27,7 @@ export default function App({
 }: HomeProps) {
   return (
     <>
-      <Sidebar />
+      <Sidebar active="home"/>
       <Wrapper>
         <ChallengesProvider
           userData={user}
@@ -35,7 +35,7 @@ export default function App({
           currentExp={currentExp}
           challengesCompleted={challengesCompleted}
         >
-          <ExperienceBar />
+      <ExperienceBar />
           <CountdownProvider>
             <Section>
               <LeftPanel />

@@ -6,7 +6,7 @@ export const ChallengeButton = styled(Button)<{ success?: boolean }>`
 
   margin: 0;
   font-size: 1rem;
-
+  outline: none;
   transition: filter 0.5s;
 
   color: ${({ theme }) => theme.colors.white};
@@ -17,6 +17,6 @@ export const ChallengeButton = styled(Button)<{ success?: boolean }>`
       : ({ theme }) => theme.colors.danger};
 
   &:hover {
-    filter: brightness(0.9)
+    filter: brightness(0.9);
   }
 `

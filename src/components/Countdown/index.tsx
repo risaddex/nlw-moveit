@@ -2,7 +2,9 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { CountdownContext } from '../../context/CountdownContext'
 import { ActiveButton, Button } from '../Buttons'
+import { TimeBar } from '../ProgressBar'
 import { Clock } from './Clock'
+import { useState } from 'react';
 
 export const Countdown = () => {
   const {
@@ -12,10 +14,14 @@ export const Countdown = () => {
     resetCountdown,
     seconds,
     startCountdown,
+    DEFAULT_TIME,
+    time
   } = useContext(CountdownContext)
 
   const [minLeft, minRight] = String(minutes).padStart(2, '0').split('')
   const [secLeft, secRight] = String(seconds).padStart(2, '0').split('')
+  
+  const progress = Math.round((DEFAULT_TIME - time) * 100 / DEFAULT_TIME)
 
   return (
     <>
@@ -29,14 +35,18 @@ export const Countdown = () => {
       </CountdownContainer>
 
       {hasFinished ? (
-        <Button disabled>Ciclo encerrado</Button>
+        <Button disabled>
+          Ciclo encerrado
+          <TimeBar progress={progress} />
+        </Button>
       ) : (
         <ActiveButton
           type="button"
           onClick={isActive ? resetCountdown : startCountdown}
           isActive={isActive}
         >
-          {isActive ? 'Abandonar Ciclo' : 'Iniciar um Ciclo'}
+          {isActive ? 'Abandonar Ciclo' : 'Iniciar um Ciclo ►'}
+          <TimeBar progress={progress} />
         </ActiveButton>
       )}
     </>
@@ -59,9 +69,9 @@ const CountdownContainer = styled.div`
     margin: 0 0.5rem;
   }
 
+  //? numbers container
   > div {
     flex: 1;
-
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -84,6 +94,7 @@ const CountdownContainer = styled.div`
 
     > span {
       flex: 1;
+      height: 100%;
 
       &:first-child {
         border-right: 1px solid #f0f1f3;

@@ -1,5 +1,5 @@
 export { Wrapper } from './Wrapper'
-export { ExperienceBar } from './ExperienceBar'
+export { ExperienceBar, TimeBar } from './ProgressBar'
 export { Section } from './Section'
 export { LeftPanel } from './LeftPanel'
 export { RightPanel } from './RightPanel'

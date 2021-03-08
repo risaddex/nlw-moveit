@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import { Button } from './Button'
 
 export const ActiveButton = styled(Button)<{ isActive: boolean }>`
+  outline: none;
+  position: relative;
+
   background: ${({ isActive }) =>
     isActive
       ? ({ theme }) => theme.colors.white
@@ -18,5 +21,4 @@ export const ActiveButton = styled(Button)<{ isActive: boolean }>`
         ? ({ theme }) => theme.colors.danger
         : ({ theme }) => theme.colors.darkPrimary};
   }
-
 `

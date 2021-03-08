@@ -14,13 +14,14 @@ export const ProfileInfo = () => {
 }
 
 const ChallengeBox = styled.div`
-  padding: 1.25rem;
-  color: rgba(75, 85, 99, 1);
+  margin: 2.5rem 0 ;
+  color: ${({ theme }) => theme.colors.text};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px;
-  border-color: darkgray;
+  border-bottom: 3px solid;
+  border-color: ${({ theme }) => theme.colors.gray};
+  ;
 `
 
 const Completed = styled.span`

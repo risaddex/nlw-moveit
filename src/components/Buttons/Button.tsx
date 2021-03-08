@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Button = styled.button<{ disabled?: boolean}>`
   width: 100%;
   height: 5rem;
-
+  position: relative;
   margin-top: 2rem;
 
   display: flex;
@@ -16,7 +16,7 @@ export const Button = styled.button<{ disabled?: boolean}>`
 
   font-size: 1.25rem;
   font-weight: 600;
-
+  outline: 0;
   transition: background-color 0.5s;
 
   &:disabled {

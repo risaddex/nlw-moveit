@@ -46,11 +46,11 @@ export const ChalllengeBox = () => {
       ) : (
         <Inactive>
           <strong>
-            Inicie um ciclo recebendo desafios para serem completados
+            Inicie um ciclo para receber desafios
           </strong>
           <div>
             <img src="icons/level-up.svg" alt="level up icon" />
-            <p>Avance de level completando desafios.</p>
+            <p>Avance de nível completando os desafios.</p>
           </div>
         </Inactive>
       )}

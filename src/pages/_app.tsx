@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     font-family: 'Inter', sans-serif;
+    background-color: ${({ theme }) => theme.colors.background};
     // Deixa branco no começo
   }
   html, body {
@@ -20,7 +21,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   #__next {
     flex: 1;
+    width: 100vw;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 `
 

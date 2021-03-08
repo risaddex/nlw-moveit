@@ -14,7 +14,7 @@ export const LeftPanel = () => {
 }
 
 const PanelContainer = styled.div`
-  min-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `

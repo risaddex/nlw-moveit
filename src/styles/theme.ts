@@ -13,15 +13,17 @@ const myTheme: DefaultTheme = {
     text: '#666666',
     success: '#4CD62B',
     danger: '#E83F5B',
-    background: '#F2F3F5',
+    background: '#E5E5E5',
   },
 
   shadows: {
-    main: '0 0 60px rgba(0, 0, 0, 0.5)',
+    main: '0 0 60px rgba(0, 0, 0, 0.2)',
+    nav: '0 0 20px rgba(0, 0, 0, 0.1)',
   },
   gradients: {
-    dark: 'linear-gradient(90deg, rgba(0, 0, 0, 0.116),rgba(0, 0, 0, 0.05))'
-  }
+    dark: 'linear-gradient(90deg, rgba(0, 0, 0, 0.116),rgba(0, 0, 0, 0.05))',
+    nav: 'linear-gradient( #FFF, #E5E5E5)',
+  },
 }
 
 export { myTheme }
