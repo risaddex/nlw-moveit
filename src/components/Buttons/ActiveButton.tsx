@@ -16,6 +16,8 @@ export const ActiveButton = styled(Button)<{ isActive: boolean }>`
       : ({ theme }) => theme.colors.white};
 
   &:hover {
+    color: white;
+
     background: ${({ isActive }) =>
       isActive
         ? ({ theme }) => theme.colors.danger
