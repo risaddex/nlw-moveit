@@ -10,7 +10,8 @@ import {
 import { ChallengesProvider } from '../../context/ChallengesContext'
 import { CountdownProvider } from '../../context/CountdownContext'
 import { User } from '../../types'
-import { Sidebar } from '../../components/Wrapper/Sidebar';
+import { Sidebar } from '../../components/Wrapper/Sidebar'
+import { useState } from 'react'
 
 type HomeProps = {
   user: User
@@ -25,9 +26,11 @@ export default function App({
   currentExp,
   challengesCompleted,
 }: HomeProps) {
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
     <>
-      <Sidebar active="home"/>
+      <Sidebar active="home" />
       <Wrapper>
         <ChallengesProvider
           userData={user}
@@ -35,7 +38,7 @@ export default function App({
           currentExp={currentExp}
           challengesCompleted={challengesCompleted}
         >
-      <ExperienceBar />
+          <ExperienceBar />
           <CountdownProvider>
             <Section>
               <LeftPanel />
@@ -49,10 +52,15 @@ export default function App({
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  console.log('carregando')
 
   const userData = await fetchGithubUserData(ctx.query.user)
 
+  if(!userData) {
+    return {
+      notFound: true
+    }
+  }
+  
   const cookies = Object.keys(ctx.req.cookies).find((item) =>
     item.startsWith(`${userData.id}_`)
   )
@@ -68,18 +76,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         challengesCompleted: 0,
       }
 
-  console.log(cookies)
+  console.log(userData,'\n', cookies)
   const { level, currentExp, challengesCompleted } = cookies
-
-  //? handle manual querying from browser
-  //  if (/\W/.test(ctx.query.user)) {
-  //    return {
-  //      redirect: {
-  //        destination: '/',
-  //        permanent: false
-  //      }
-  //    }
-  //  }
 
   return {
     props: {

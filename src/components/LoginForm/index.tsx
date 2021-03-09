@@ -1,20 +1,18 @@
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import styled from 'styled-components';
-import { fetchGithubUserData } from '../../api';
-import { User } from '../../types';
-import { ActiveChallenge as Form } from '../RightPanel/Challenges';
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import styled from 'styled-components'
+import { fetchGithubUserData } from '../../api'
+import { ActiveChallenge as Form } from '../RightPanel/Styled'
 
-export const LoginForm = () => {
+export const LoginForm = ({ setLoading }) => {
   const router = useRouter()
-  
+
   const [name, setName] = useState('')
 
-   const handleClick = () => {
-
-    router.push(`/app?user=${name}`)
-     
-   }
+  const handleClick = () => {
+    setLoading()
+    router.replace(`/app?user=${name}`, '/app')
+  }
 
   return (
     <StyledForm>
@@ -31,11 +29,16 @@ export const LoginForm = () => {
         </FormMain>
         <FormFooter onSubmit={(e) => e.preventDefault()}>
           <input
+            type="text"
             onChange={(e) => setName(e.target.value)}
             name="userName"
             placeholder={`Digite seu username`}
           />
-          <button disabled={name.length === 0} type="submit" onClick={handleClick} />
+          <button
+            disabled={name.length === 0}
+            type="submit"
+            onClick={handleClick}
+          />
         </FormFooter>
       </Form>
     </StyledForm>
@@ -105,10 +108,9 @@ const FormFooter = styled.form`
 
   input {
     flex: 1;
-
     background: ${({ theme }) => theme.gradients.dark};
     color: ${({ theme }) => theme.colors.gray};
-
+    line-height: 1rem;
     font-size: 1rem;
     padding: 0 1.25rem;
 
@@ -117,6 +119,11 @@ const FormFooter = styled.form`
     border-radius: 5px 0 0 5px;
 
     &:focus {
+      border: 3px solid ${({ theme }) => theme.colors.darkPrimary};
+      border-right: none;
+      ::placeholder {
+        color: transparent;
+      }
     }
 
     ::placeholder {
@@ -125,7 +132,7 @@ const FormFooter = styled.form`
   }
 
   button {
-    min-width: 18%;
+    min-width: 20%;
 
     background: url('/icons/arrow.svg') no-repeat;
     background-position: center;

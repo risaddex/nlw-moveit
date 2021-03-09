@@ -36,7 +36,7 @@ export const Countdown = () => {
 
       {hasFinished ? (
         <Button disabled>
-          Ciclo encerrado
+          Ciclo encerrado <img src="icons/check_circle.svg" alt="check circle"/>
           <TimeBar progress={progress} />
         </Button>
       ) : (

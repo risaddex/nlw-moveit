@@ -24,7 +24,7 @@ interface CountdownProviderProps {
 
 let countdownTimeout: NodeJS.Timeout
 // PADRÂO é 25 MINUTOS
-const DEFAULT_TIME = 0.5 * 60
+const DEFAULT_TIME = 0.1 * 60
 
 export const CountdownContext = createContext({} as CountdownContextData)
 export const CountdownProvider = ({ children }: CountdownProviderProps) => {

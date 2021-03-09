@@ -3,8 +3,6 @@ import { createContext, ReactNode, useEffect, useState } from 'react'
 import challengeData from '../../challenges.json'
 import { LevelUpModal } from '../components'
 import { Challenge, User } from '../types'
-import { fetchGithubUserData } from '../api'
-import { userInfo } from 'node:os'
 
 const EXPCURVERATIO: number = 4
 interface IChallengesProviderProps {
@@ -39,7 +37,7 @@ export function ChallengesProvider({
   const [level, setLevel] = useState(rest.level ?? 1)
   const [currentExp, setCurrentExp] = useState(rest.currentExp ?? 0)
   const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0)
-  
+  const [isLoading, setIsLoading] = useState(false)
   const [activeChallenge, setActiveChallenge] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const experienceToNextLevel = Math.pow((level + 1) * EXPCURVERATIO, 2)

@@ -6,7 +6,7 @@ import {
   ActiveChallenge as Active,
   ChallengeContainer,
   InactiveChallenge as Inactive, StyledFooter, StyledHeader, StyledMain
-} from './Challenges';
+} from './Styled';
 
 export const ChalllengeBox = () => {
   const { activeChallenge, resetChallenge, completeChallenge } = useContext(

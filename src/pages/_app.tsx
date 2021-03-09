@@ -5,7 +5,9 @@ import { myTheme } from '../styles/theme'
 export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
+
   }
+
   body {
     margin: 0;
     padding: 0;
@@ -16,15 +18,21 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.background};
     // Deixa branco no começo
   }
+  
   html, body {
     min-height: 100vh;
   }
+
   #__next {
     flex: 1;
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  a {
+    text-decoration: none;
   }
 `
 

@@ -25,4 +25,8 @@ export const Button = styled.button<{ disabled?: boolean}>`
     box-shadow: ${({ theme }) => theme.shadows.main };
     cursor: not-allowed;
   }
+
+  >img {
+    padding: 0.5rem;
+  }
 `

@@ -22,5 +22,9 @@ export const ActiveButton = styled(Button)<{ isActive: boolean }>`
       isActive
         ? ({ theme }) => theme.colors.danger
         : ({ theme }) => theme.colors.darkPrimary};
+
+    > div { //?progress Bar
+      display: none;
+    }
   }
 `
