@@ -8,6 +8,7 @@ const Icon = styled.svg.attrs({
 const Svg = styled(Icon)`
   width: 32px;
   height: 32px;
+
 `
 
 export const HomeIcon = ({ color = 'transparent', size = 24, opacity = 1 }) => (

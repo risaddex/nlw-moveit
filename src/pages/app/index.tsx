@@ -7,11 +7,12 @@ import {
   Section,
   Wrapper,
 } from '../../components'
+import { Sidebar } from '../../components/Wrapper/Sidebar'
 import { ChallengesProvider } from '../../context/ChallengesContext'
 import { CountdownProvider } from '../../context/CountdownContext'
 import { User } from '../../types'
-import { Sidebar } from '../../components/Wrapper/Sidebar'
-import { useState } from 'react'
+import { useRouter } from 'next/router';
+import GitHubCorner from '../../components/GitHubCorner'
 
 type HomeProps = {
   user: User
@@ -26,12 +27,16 @@ export default function App({
   currentExp,
   challengesCompleted,
 }: HomeProps) {
-  const [isLoading, setIsLoading] = useState(false)
+
+  if (user.name === 'undefined') {
+    useRouter().push('/')
+  }
 
   return (
     <>
       <Sidebar active="home" />
       <Wrapper>
+        <GitHubCorner current="home" projectUrl="https://github.com/risaddex/nlw-moveit" />
         <ChallengesProvider
           userData={user}
           level={level}
@@ -52,15 +57,17 @@ export default function App({
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-
   const userData = await fetchGithubUserData(ctx.query.user)
 
-  if(!userData) {
+  if (!userData) {
     return {
-      notFound: true
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
     }
   }
-  
+
   const cookies = Object.keys(ctx.req.cookies).find((item) =>
     item.startsWith(`${userData.id}_`)
   )
@@ -76,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         challengesCompleted: 0,
       }
 
-  console.log(userData,'\n', cookies)
+  console.log(userData, '\n', cookies)
   const { level, currentExp, challengesCompleted } = cookies
 
   return {

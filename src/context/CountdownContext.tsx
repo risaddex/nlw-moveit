@@ -20,14 +20,18 @@ interface CountdownContextData {
 
 interface CountdownProviderProps {
   children: ReactNode
+  lazyMode?: boolean
 }
 
 let countdownTimeout: NodeJS.Timeout
 // PADRÂO é 25 MINUTOS
-const DEFAULT_TIME = 0.1 * 60
 
 export const CountdownContext = createContext({} as CountdownContextData)
-export const CountdownProvider = ({ children }: CountdownProviderProps) => {
+export const CountdownProvider = ({
+  children,
+  lazyMode = false,
+}: CountdownProviderProps) => {
+  const DEFAULT_TIME = !lazyMode ? 0.5 * 60 : 25 * 60
   const { startNewChallenge } = useContext(challengesContext)
   const [time, setTime] = useState(DEFAULT_TIME)
   const [isActive, setIsActive] = useState(false)

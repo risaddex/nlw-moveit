@@ -33,6 +33,15 @@ const StyledNav = styled.nav<SidebarProps>(
         width: 100%;
         display: flex;
 
+        &:hover {
+          g {
+            opacity: 1;
+          }
+          path {
+            stroke: ${({ theme }) => theme.colors.primary};
+          }
+        }
+
         a {
           display: flex;
           flex: 1;
@@ -113,5 +122,3 @@ export const Sidebar = ({ active }: { active: ActiveButtonProps }) => {
     </StyledNav>
   )
 }
-
-const Home = styled.svg.attrs({})

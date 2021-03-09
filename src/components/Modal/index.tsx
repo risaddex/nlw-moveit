@@ -27,7 +27,7 @@ export const LevelUpModal = () => {
         </ModalMain>
 
         <ModalLink
-          href={`https://twitter.com/intent/tweet?via=risaddex&hashtags=moveitclone&related=risaddex&text="eoq"`}
+          href={`https://twitter.com/intent/tweet?via=risaddex&hashtags=moveitclone&related=risaddex&text=Subi para o nível ${level} no`}
           target="_blank"
           rel="noreferrer"
         >
@@ -47,6 +47,31 @@ export const LevelUpModal = () => {
             </svg>
           </span>
         </ModalLink>
+      </ModalContainer>
+    </Modal>
+  )
+}
+
+export const WarningModal = ({ onClose }) => {
+  const handleClick = () => onClose()
+
+  return (
+    <Modal>
+      <ModalContainer>
+        <ModalMain>
+          <ModalTitle>Atenção</ModalTitle>
+          <ModalText>
+            <br />
+            Este App é um clone com finalidade única e exclusivamente didática.
+            <br />
+            Moveit possui todos os direitos reservados sobre seu logotipo e
+            imagem.
+          </ModalText>
+
+          <ModalButton type="button" onClick={handleClick}>
+            <img src="/icons/close.svg" alt="fechar modal" />
+          </ModalButton>
+        </ModalMain>
       </ModalContainer>
     </Modal>
   )

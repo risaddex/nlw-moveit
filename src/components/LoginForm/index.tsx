@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import styled from 'styled-components'
-import { fetchGithubUserData } from '../../api'
 import { ActiveChallenge as Form } from '../RightPanel/Styled'
 
 export const LoginForm = ({ setLoading }) => {
@@ -12,6 +11,7 @@ export const LoginForm = ({ setLoading }) => {
   const handleClick = () => {
     setLoading()
     router.replace(`/app?user=${name}`, '/app')
+    setName('')
   }
 
   return (
