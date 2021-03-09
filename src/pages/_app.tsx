@@ -34,6 +34,13 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+  
+  @media only screen and (max-width: 768px) {
+    html, body {
+      width: 100%;
+      height: auto;
+    }
+  }
 `
 
 function MyApp({ Component, pageProps }: AppProps) {

@@ -7,6 +7,14 @@ export const StyledSection = styled.section`
   grid-template-columns: 1fr 1fr;
   gap: 6.25rem;
   align-content: center;
+
+  @media only screen and (max-width: 768px) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 export const Section = ({ children }) => {

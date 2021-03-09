@@ -15,10 +15,20 @@ const Background = styled(StyledWrapper)`
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 2rem;
   min-width: 100%;
+  
+  @media only screen and (max-width: 768px) {
+    padding:0;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
 `
 const WelcomeSection = styled(Section)`
-  margin: 0;
-  gap: 0;
+  
+  
 `
 
 const Welcome = () => {
@@ -40,8 +50,8 @@ const Welcome = () => {
 
   return (
     <Background>
-      {isModalOpen && <WarningModal onClose={closeModal} />}
       <GitHubCorner current="app" projectUrl="https://github.com/risaddex/nlw-moveit" />
+      {isModalOpen && <WarningModal onClose={closeModal} />}
       <WelcomeSection>
         <LoginForm setLoading={setLoadingState} />
       </WelcomeSection>

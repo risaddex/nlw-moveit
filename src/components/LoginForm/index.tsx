@@ -56,14 +56,33 @@ const StyledForm = styled.div`
   min-height: 400px;
   margin-right: 3rem;
   cursor: default;
+
+  @media only screen and (max-width: 768px) {
+    min-height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 2rem 1rem;
+  }
 `
 
 const FormHeader = styled.header`
   flex: 1;
+  min-height: 20%;
   border: none;
   background: url('/logo.svg') no-repeat;
   background-position: left top;
   background-size: contain;
+
+  @media only screen and (max-width: 768px) {
+    flex: 1;
+    margin-top: 5rem;
+    max-height: 15%;
+  }
 `
 
 const FormMain = styled.main`
@@ -74,7 +93,16 @@ const FormMain = styled.main`
 
   gap: 1rem;
   align-items: center;
-  /* margin-right: 2.5rem; */
+
+  @media only screen and (max-width: 768px) {
+    gap: 0;
+    flex: 1;
+    max-height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 
   h3 {
     font-size: 2rem;
@@ -110,7 +138,6 @@ const FormFooter = styled.form`
     flex: 1;
     background: ${({ theme }) => theme.gradients.dark};
     color: ${({ theme }) => theme.colors.gray};
-    line-height: 1rem;
     font-size: 1rem;
     padding: 0 1.25rem;
 
@@ -128,6 +155,11 @@ const FormFooter = styled.form`
 
     ::placeholder {
       color: ${({ theme }) => theme.colors.gray};
+    }
+
+    @media only screen and (max-width: 768px) {
+      max-height: 5rem;
+      flex: 1;
     }
   }
 
@@ -153,6 +185,11 @@ const FormFooter = styled.form`
       &:hover {
         background-color: ${({ theme }) => theme.colors.danger};
       }
+    }
+
+    @media only screen and (max-width: 768px) {
+      max-height: 5rem;
+      flex: 1;
     }
   }
 `
