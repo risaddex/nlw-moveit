@@ -27,9 +27,6 @@ export default function App({
   currentExp,
   challengesCompleted,
 }: HomeProps) {
-  if (user.name === 'undefined') {
-    useRouter().push('/')
-  }
 
   return (
     <>
@@ -61,7 +58,7 @@ export default function App({
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const userData = await fetchGithubUserData(ctx.query.user)
 
-  if (userData.name === null) {
+  if (userData.username === null) {
     return {
       redirect: {
         destination: '/',
