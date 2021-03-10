@@ -17,7 +17,7 @@ const Background = styled(StyledWrapper)`
   min-width: 100%;
   
   @media only screen and (max-width: 768px) {
-    padding:0;
+    padding:2rem 1rem;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -26,11 +26,6 @@ const Background = styled(StyledWrapper)`
   }
 
 `
-const WelcomeSection = styled(Section)`
-  
-  
-`
-
 const Welcome = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(true)
@@ -50,11 +45,14 @@ const Welcome = () => {
 
   return (
     <Background>
-      <GitHubCorner current="app" projectUrl="https://github.com/risaddex/nlw-moveit" />
+      <GitHubCorner
+        current="app"
+        projectUrl="https://github.com/risaddex/nlw-moveit"
+      />
       {isModalOpen && <WarningModal onClose={closeModal} />}
-      <WelcomeSection>
+      <Section>
         <LoginForm setLoading={setLoadingState} />
-      </WelcomeSection>
+      </Section>
       {isLoading && <Spinner />}
     </Background>
   )

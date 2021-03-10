@@ -22,11 +22,15 @@ export const Profile = () => {
 const Container = styled.div`
   display: flex;
   align-items: center;
+  
 
   > img {
     width: 5.5rem;
     height: 5.5rem;
     border-radius: 50%;
+  }
+  @media only screen and (max-width: 768px) {
+    display:none;
   }
 `
 const CardContainer = styled.div`
@@ -34,6 +38,9 @@ const CardContainer = styled.div`
 
   strong {
     font-size: 1.25rem;
+  }
+  @media only screen and (max-width: 768px) {
+    margin: 0;
   }
 `
 const LevelContainer = styled.div`
@@ -45,4 +52,6 @@ const LevelContainer = styled.div`
     margin-top: 0.5rem;
     margin-left: 0.5rem;
   }
+
+  
 `

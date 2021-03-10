@@ -8,7 +8,8 @@ export const LoginForm = ({ setLoading }) => {
 
   const [name, setName] = useState('')
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
     setLoading()
     router.replace(`/app?user=${name}`, '/app')
     setName('')
@@ -27,18 +28,16 @@ export const LoginForm = ({ setLoading }) => {
             <p>{`Faça login com seu github para começar`}</p>
           </div>
         </FormMain>
-        <FormFooter onSubmit={(e) => e.preventDefault()}>
+
+        <FormFooter onSubmit={handleClick}>
           <input
             type="text"
             onChange={(e) => setName(e.target.value)}
             name="userName"
             placeholder={`Digite seu username`}
+            required
           />
-          <button
-            disabled={name.length === 0}
-            type="submit"
-            onClick={handleClick}
-          />
+          <button disabled={name.length === 0} type="submit" />
         </FormFooter>
       </Form>
     </StyledForm>
@@ -64,9 +63,22 @@ const StyledForm = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    min-width: 100%;
     margin: 0;
-    padding: 2rem 1rem;
+  }
+
+  @media only screen and (max-height: 400px) {
+    header {
+      margin: 2rem;
+    }
+    h3 {
+      display: none;
+    }
+    input,
+    button {
+      min-height: 5rem;
+      margin-bottom: 2rem;
+    }
   }
 `
 
@@ -164,7 +176,7 @@ const FormFooter = styled.form`
   }
 
   button {
-    min-width: 20%;
+    min-width: 5rem;
 
     background: url('/icons/arrow.svg') no-repeat;
     background-position: center;
@@ -188,8 +200,8 @@ const FormFooter = styled.form`
     }
 
     @media only screen and (max-width: 768px) {
-      max-height: 5rem;
       flex: 1;
+      max-height: 5rem;
     }
   }
 `

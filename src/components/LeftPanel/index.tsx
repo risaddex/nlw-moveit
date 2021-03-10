@@ -17,4 +17,8 @@ const PanelContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 768px) {
+    padding: 0.5rem;
+  }
 `

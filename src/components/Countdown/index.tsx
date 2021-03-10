@@ -4,7 +4,6 @@ import { CountdownContext } from '../../context/CountdownContext'
 import { ActiveButton, Button } from '../Buttons'
 import { TimeBar } from '../ProgressBar'
 import { Clock } from './Clock'
-import { useState } from 'react';
 
 export const Countdown = () => {
   const {
@@ -69,6 +68,7 @@ const CountdownContainer = styled.div`
     margin: 0 0.5rem;
   }
 
+
   //? numbers container
   > div {
     flex: 1;
@@ -102,6 +102,10 @@ const CountdownContainer = styled.div`
       &:last-child {
         border-left: 1px solid #f0f1f3;
       }
+    }
+
+    @media only screen and (max-width: 768px) {
+      margin-bottom: 1.5rem;
     }
   }
 `

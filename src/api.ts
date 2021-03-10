@@ -1,8 +1,12 @@
 import { User } from './types';
 
 export const fetchGithubUserData: (user: string | string[]) => Promise<User> = async (user) => {
-  if (typeof user === 'object') {
-    Promise.reject('invalid user')
+  if (typeof user === 'object' || user === 'undefined') {
+    Promise.reject(new Error('invalid user')).then(() => {
+
+    }, (error) => {
+      console.error(error)
+    })
   }
   const options = {
     headers: {
@@ -13,7 +17,13 @@ export const fetchGithubUserData: (user: string | string[]) => Promise<User> = a
 
   const res = await fetch(`https://api.github.com/users/${user}`, options)
   if (!res.ok) {
-    throw new Error("Erro ao buscar dados no servidor")
+    return {
+      username: null,
+      twitter: null,
+      name: null,
+      id: null,
+      avatar: null,
+    }
   }
 
   const { login, twitter_username, name, id, avatar_url } = await res.json()

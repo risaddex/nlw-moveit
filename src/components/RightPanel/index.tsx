@@ -13,4 +13,8 @@ export const RightPanel = () => {
 const StyledRightPanel = styled.div`
   display:flex;
   flex-direction:column;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `

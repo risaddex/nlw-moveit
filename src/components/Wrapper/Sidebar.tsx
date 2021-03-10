@@ -74,6 +74,10 @@ const StyledNav = styled.nav<SidebarProps>(
     span[role= ${active}] {
       background-color: #5965e0;
     }
+
+    @media only screen and (max-width: 768px) {
+      display:none;
+    }
   `
 )
 type ActiveButtonProps = 'home' | 'ranking'

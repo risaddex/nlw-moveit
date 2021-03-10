@@ -11,7 +11,7 @@ import { Sidebar } from '../../components/Wrapper/Sidebar'
 import { ChallengesProvider } from '../../context/ChallengesContext'
 import { CountdownProvider } from '../../context/CountdownContext'
 import { User } from '../../types'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 import GitHubCorner from '../../components/GitHubCorner'
 
 type HomeProps = {
@@ -27,7 +27,6 @@ export default function App({
   currentExp,
   challengesCompleted,
 }: HomeProps) {
-
   if (user.name === 'undefined') {
     useRouter().push('/')
   }
@@ -36,7 +35,10 @@ export default function App({
     <>
       <Sidebar active="home" />
       <Wrapper>
-        <GitHubCorner current="home" projectUrl="https://github.com/risaddex/nlw-moveit" />
+        <GitHubCorner
+          current="home"
+          projectUrl="https://github.com/risaddex/nlw-moveit"
+        />
         <ChallengesProvider
           userData={user}
           level={level}
@@ -59,7 +61,7 @@ export default function App({
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const userData = await fetchGithubUserData(ctx.query.user)
 
-  if (!userData) {
+  if (userData.name === null) {
     return {
       redirect: {
         destination: '/',

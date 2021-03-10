@@ -11,6 +11,11 @@ export const StyledWrapper = styled.div`
   height: 100vh;
   width: 100%;
   max-width: 1280px;
+
+  @media only screen and (max-width: 768px) {
+    padding:0;
+    
+  }
 `
 
 export const Wrapper = ({ children }) => (
