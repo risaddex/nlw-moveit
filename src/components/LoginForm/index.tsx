@@ -1,18 +1,22 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import styled from 'styled-components'
+import { myTheme } from '../../styles/theme'
 import { ActiveChallenge as Form } from '../RightPanel/Styled'
 
-export const LoginForm = ({ setLoading }) => {
+export const LoginForm = ({ setLoading, hasError }) => {
   const router = useRouter()
 
   const [name, setName] = useState('')
 
-  const handleClick = (e) => {
-    e.preventDefault()
+  const handleClick = () => {
     setLoading()
     router.replace(`/app?user=${name}`, '/app')
     setName('')
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
   }
 
   return (
@@ -29,7 +33,7 @@ export const LoginForm = ({ setLoading }) => {
           </div>
         </FormMain>
 
-        <FormFooter onSubmit={handleClick}>
+        <FormFooter onSubmit={handleSubmit}>
           <input
             type="text"
             onChange={(e) => setName(e.target.value)}
@@ -37,8 +41,24 @@ export const LoginForm = ({ setLoading }) => {
             placeholder={`Digite seu username`}
             required
           />
-          <button disabled={name.length === 0} type="submit" />
+          <button
+            disabled={name.length === 0}
+            type="submit"
+            onClick={handleClick}
+          />
         </FormFooter>
+        {hasError && (
+          <span
+            style={{
+              position: 'sticky',
+              display: 'flex',
+              alignSelf: 'center',
+              color: myTheme.colors.danger,
+            }}
+          >
+            nome de usuário inválido
+          </span>
+        )}
       </Form>
     </StyledForm>
   )
@@ -143,7 +163,7 @@ const FormMain = styled.main`
 const FormFooter = styled.form`
   flex: 1;
   display: flex;
-  max-height: 20%;
+  height: 4rem;
 
   input {
     flex: 1;
@@ -176,7 +196,7 @@ const FormFooter = styled.form`
 
   button {
     min-width: 5rem;
-
+    max-width: 20%;
     background: url('/icons/arrow.svg') no-repeat;
     background-position: center;
     background-color: ${({ theme }) => theme.colors.darkPrimary};

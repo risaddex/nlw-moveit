@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import GitHubCorner from '../components/GitHubCorner'
 import { LoginForm } from '../components/LoginForm/index'
 import { Spinner } from '../components/LoginForm/Loading'
 import { WarningModal } from '../components/Modal'
 import { Section } from '../components/Section/index'
+import { useRouter } from 'next/router';
 
 const Background = styled.div`
   flex: 1;
@@ -36,9 +36,22 @@ const Background = styled.div`
 const Welcome = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(true)
+  const [hasError, setHasError] = useState(false)
+
   const router = useRouter()
 
-  const closeModal = () => setIsModalOpen(false)
+  useEffect(() => {
+    if (router.query.fail === 'true') {
+      setIsLoading(false)
+      window.history.replaceState(null, '', '/')
+      setHasError(true)
+    }
+  },[router.query])
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setHasError(false)
+  }
 
   const setLoadingState = () => {
     setIsLoading(true)
@@ -51,9 +64,17 @@ const Welcome = () => {
         projectUrl="https://github.com/risaddex/nlw-moveit"
       />
       <Background>
-        {isModalOpen && <WarningModal onClose={closeModal} />}
+        {isModalOpen && (
+          <WarningModal onClose={closeModal} title="Atenção">
+            <br />
+            Este App é um clone com finalidade única e exclusivamente didática.
+            <br />
+            Moveit possui todos os direitos reservados sobre seu logotipo e
+            imagem.
+          </WarningModal>
+        )}
         <Section>
-          <LoginForm setLoading={setLoadingState} />
+          <LoginForm hasError={hasError} setLoading={setLoadingState} />
         </Section>
         {isLoading && <Spinner />}
       </Background>

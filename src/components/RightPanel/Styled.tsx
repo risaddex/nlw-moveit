@@ -61,9 +61,6 @@ export const ActiveChallenge = styled.div<IChallengeProps>`
   @media only screen and (max-width: 768px) {
     padding: 0 5px;
     margin: 5vh 0;
-    border: 1px solid ${({ theme }) => theme.colors.gray};
-    border-top: none;
-    border-bottom: none;
     border-radius: 5px;
     text-align: justify;
   }

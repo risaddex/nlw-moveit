@@ -52,20 +52,16 @@ export const LevelUpModal = () => {
   )
 }
 
-export const WarningModal = ({ onClose }) => {
+export const WarningModal = ({ onClose, title, children}) => {
   const handleClick = () => onClose()
 
   return (
     <Modal>
       <ModalContainer>
         <ModalMain>
-          <ModalTitle>Atenção</ModalTitle>
+          <ModalTitle>{title}</ModalTitle>
           <ModalText>
-            <br />
-            Este App é um clone com finalidade única e exclusivamente didática.
-            <br />
-            Moveit possui todos os direitos reservados sobre seu logotipo e
-            imagem.
+            {children}
           </ModalText>
 
           <ModalButton type="button" onClick={handleClick}>

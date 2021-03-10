@@ -5,14 +5,13 @@ import {
   LeftPanel,
   RightPanel,
   Section,
-  Wrapper,
+  Wrapper
 } from '../../components'
+import GitHubCorner from '../../components/GitHubCorner'
 import { Sidebar } from '../../components/Layout/Sidebar'
 import { ChallengesProvider } from '../../context/ChallengesContext'
 import { CountdownProvider } from '../../context/CountdownContext'
 import { User } from '../../types'
-import { useRouter } from 'next/router'
-import GitHubCorner from '../../components/GitHubCorner'
 
 type HomeProps = {
   user: User
@@ -58,10 +57,10 @@ export default function App({
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const userData = await fetchGithubUserData(ctx.query.user)
 
-  if (userData.username === null) {
+  if (userData.username === null || userData.name == null) {
     return {
       redirect: {
-        destination: '/',
+        destination: '/?fail=true&id=1',
         permanent: false,
       },
     }
@@ -84,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   console.log(userData, '\n', cookies)
   const { level, currentExp, challengesCompleted } = cookies
-
+  
   return {
     props: {
       user: userData,
