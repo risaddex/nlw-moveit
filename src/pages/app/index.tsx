@@ -7,7 +7,7 @@ import {
   Section,
   Wrapper,
 } from '../../components'
-import { Sidebar } from '../../components/Wrapper/Sidebar'
+import { Sidebar } from '../../components/Layout/Sidebar'
 import { ChallengesProvider } from '../../context/ChallengesContext'
 import { CountdownProvider } from '../../context/CountdownContext'
 import { User } from '../../types'
@@ -65,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       redirect: {
         destination: '/',
-        permanent: true,
+        permanent: false,
       },
     }
   }

@@ -7,6 +7,13 @@ const Wrapper = styled.div`
   border: 0;
   right: 0;
   z-index: 20;
+
+  @media only screen and (max-width: 768px) {
+    svg {
+      width: 65px;
+      height: 65px;
+    }
+  }
 `
 
 const SVGWrapper = styled.svg<{ current: 'home' | 'app' }>`
@@ -43,6 +50,7 @@ const SVGWrapper = styled.svg<{ current: 'home' | 'app' }>`
     & .octo-arm {
       animation: octocat-wave 560ms ease-in-out;
     }
+
   }
 `
 export default function GitHubCorner({ projectUrl, current }) {

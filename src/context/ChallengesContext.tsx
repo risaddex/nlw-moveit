@@ -85,7 +85,6 @@ export function ChallengesProvider({
   }
 
   function completeChallenge() {
-    debugger
     if (!activeChallenge) {
       return
     }

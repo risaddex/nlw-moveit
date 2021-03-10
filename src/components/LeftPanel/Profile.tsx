@@ -23,24 +23,30 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   
-
   > img {
+    display:flex;
     width: 5.5rem;
-    height: 5.5rem;
+    height: auto;
     border-radius: 50%;
   }
   @media only screen and (max-width: 768px) {
-    display:none;
+    justify-content: center;    
+    position:absolute;
+    max-height: 15vmax;
+    left:1vh;
+    top: 15vh;
+    align-items: center;
   }
 `
 const CardContainer = styled.div`
   margin-left: 1.25rem;
-
   strong {
     font-size: 1.25rem;
   }
+
   @media only screen and (max-width: 768px) {
-    margin: 0;
+    display:flex;
+    flex-direction: column;
   }
 `
 const LevelContainer = styled.div`

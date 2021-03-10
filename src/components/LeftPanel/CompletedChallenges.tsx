@@ -23,7 +23,8 @@ const ChallengeBox = styled.div`
   border-color: ${({ theme }) => theme.colors.gray};
 
   @media only screen and (max-width: 768px) {
-    display:none;
+    margin-top:3rem;
+    margin-bottom: 2rem;
   }
 `
 

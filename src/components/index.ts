@@ -1,4 +1,4 @@
-export { Wrapper } from './Wrapper'
+export { Wrapper } from './Layout'
 export { ExperienceBar, TimeBar } from './ProgressBar'
 export { Section } from './Section'
 export { LeftPanel } from './LeftPanel'

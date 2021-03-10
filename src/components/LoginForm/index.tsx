@@ -101,7 +101,6 @@ const FormMain = styled.main`
   flex: 1;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  background-color: ${({ theme }) => theme.colors.primary};
 
   gap: 1rem;
   align-items: center;

@@ -11,6 +11,10 @@ export const Modal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 768px) {
+    z-index: 20;
+  }
 `
 
 export const ModalContainer = styled.div`

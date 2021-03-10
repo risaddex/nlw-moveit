@@ -25,6 +25,10 @@ export const ActiveButton = styled(Button)<{ isActive: boolean }>`
 
     > div { //?progress Bar
       display: none;
+
+      @media only screen and (max-width: 768px) {
+        display: initial;
+      }
     }
   }
 `

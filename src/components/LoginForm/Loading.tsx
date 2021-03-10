@@ -40,7 +40,7 @@ const SpinnerContainer = styled.div`
 export const Spinner = () => {
   return (
     <SpinnerContainer>
-      <LoadingSpinner />
+      <LoadingSpinner aria-hidden="true"/>
     </SpinnerContainer>
   )
 }

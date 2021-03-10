@@ -6,8 +6,10 @@ import styled from 'styled-components'
 export const LeftPanel = () => {
   return (
     <PanelContainer>
-      <Profile />
-      <ProfileInfo />
+      <div>
+        <Profile />
+        <ProfileInfo />
+      </div>
       <Countdown />
     </PanelContainer>
   )
@@ -20,5 +22,8 @@ const PanelContainer = styled.div`
 
   @media only screen and (max-width: 768px) {
     padding: 0.5rem;
+    display: flex;
+    align-self: center;
+    z-index: 5;
   }
 `

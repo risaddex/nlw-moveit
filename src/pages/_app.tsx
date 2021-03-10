@@ -29,6 +29,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    overflow:hidden;
   }
 
   a {
@@ -39,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
     html, body {
       width: 100%;
       height: auto;
+      scroll-behavior: smooth;
     }
   }
 `

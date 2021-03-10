@@ -1,31 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 import styled from 'styled-components'
+import GitHubCorner from '../components/GitHubCorner'
 import { LoginForm } from '../components/LoginForm/index'
 import { Spinner } from '../components/LoginForm/Loading'
+import { WarningModal } from '../components/Modal'
 import { Section } from '../components/Section/index'
-import { StyledWrapper } from '../components/Wrapper/index'
-import { useRouter } from 'next/router';
-import { WarningModal } from '../components/Modal';
-import GitHubCorner from '../components/GitHubCorner';
 
-const Background = styled(StyledWrapper)`
+const Background = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+
+  height: 100vh;
+  width: 100%;
+  max-width: 1280px;
+  padding: 2rem;
   background: url('bg.svg') no-repeat;
   background-size: 50%;
-  background-position: left;
+  background-position: left center;
   background-color: ${({ theme }) => theme.colors.primary};
-  padding: 2rem;
-  min-width: 100%;
-  
-  @media only screen and (max-width: 768px) {
-    padding:2rem 1rem;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
 
+  @media only screen and (max-width: 768px) {
+    /* position: fixed; */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-size:120%;
+    background-attachment:scroll;
+  }
 `
+
 const Welcome = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(true)
@@ -33,28 +40,24 @@ const Welcome = () => {
 
   const closeModal = () => setIsModalOpen(false)
 
-  useEffect(() => {
-    if (isLoading) {
-      router.push('/')
-    }
-  }, [])
-
   const setLoadingState = () => {
     setIsLoading(true)
   }
 
   return (
-    <Background>
+    <>
       <GitHubCorner
         current="app"
         projectUrl="https://github.com/risaddex/nlw-moveit"
       />
-      {isModalOpen && <WarningModal onClose={closeModal} />}
-      <Section>
-        <LoginForm setLoading={setLoadingState} />
-      </Section>
-      {isLoading && <Spinner />}
-    </Background>
+      <Background>
+        {isModalOpen && <WarningModal onClose={closeModal} />}
+        <Section>
+          <LoginForm setLoading={setLoadingState} />
+        </Section>
+        {isLoading && <Spinner />}
+      </Background>
+    </>
   )
 }
 
