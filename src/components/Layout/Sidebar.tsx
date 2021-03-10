@@ -111,7 +111,7 @@ export const Sidebar = ({ active }: { active: ActiveButtonProps }) => {
         </div>
         <div>
           <span role="ranking" />
-          <Link href="/leaderbords">
+          <Link href="/leaderboard">
             <a title="Rankings">
               <RankingIcon
                 size={32}
