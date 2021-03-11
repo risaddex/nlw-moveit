@@ -1,5 +1,5 @@
-import { Sidebar } from '../components/Layout/Sidebar'
-import { Ranking } from '../components/Layout/Ranking';
+import { Sidebar } from '../../components/Layout/Sidebar'
+import { Ranking } from '../../components/Layout/Ranking';
 
 const Leaderboard = () => {
   return (

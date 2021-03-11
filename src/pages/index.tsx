@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import GitHubCorner from '../components/GitHubCorner'
 import { LoginForm } from '../components/LoginForm/index'
 import { Spinner } from '../components/LoginForm/Loading'
 import { WarningModal } from '../components/Modal'
 import { Section } from '../components/Section/index'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
+import { ChallengesProvider } from '../context/ChallengesContext'
+import { Toggler } from '../components/Buttons'
 
 const Background = styled.div`
   flex: 1;
@@ -25,15 +27,15 @@ const Background = styled.div`
 
   @media only screen and (max-width: 768px) {
     /* position: fixed; */
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background-size:120%;
-    background-attachment:scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 120%;
+    background-attachment: scroll;
   }
 `
 
-const Welcome = () => {
+const Welcome = ({ themeToggler, theme }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(true)
   const [hasError, setHasError] = useState(false)
@@ -46,7 +48,7 @@ const Welcome = () => {
       window.history.replaceState(null, '', '/')
       setHasError(true)
     }
-  },[router.query])
+  }, [router.query])
 
   const closeModal = () => {
     setIsModalOpen(false)
@@ -64,6 +66,7 @@ const Welcome = () => {
         projectUrl="https://github.com/risaddex/nlw-moveit"
       />
       <Background>
+        <Toggler currentTheme={theme} toggleTheme={themeToggler} />
         {isModalOpen && (
           <WarningModal onClose={closeModal} title="Atenção">
             <br />

@@ -36,20 +36,27 @@ export function ChallengesProvider({
   const [currentUser, setCurrentUser] = useState(rest.userData ?? null)
   const [level, setLevel] = useState(rest.level ?? 1)
   const [currentExp, setCurrentExp] = useState(rest.currentExp ?? 0)
-  const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0)
+  const [challengesCompleted, setChallengesCompleted] = useState(
+    rest.challengesCompleted ?? 0
+  )
   const [isLoading, setIsLoading] = useState(false)
   const [activeChallenge, setActiveChallenge] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const experienceToNextLevel = Math.pow((level + 1) * EXPCURVERATIO, 2)
+  
 
   useEffect(() => {
     Notification.requestPermission()
+    Cookies.set('active_session', 'true', { sameSite: 'strict', path: '/app' })
   }, [])
 
   useEffect(() => {
     Cookies.set(`${currentUser.id}_level`, String(level))
     Cookies.set(`${currentUser.id}_currentExp`, String(currentExp))
-    Cookies.set(`${currentUser.id}_challengesCompleted`, String(challengesCompleted))
+    Cookies.set(
+      `${currentUser.id}_challengesCompleted`,
+      String(challengesCompleted)
+    )
   }, [level, currentExp, challengesCompleted])
 
   function levelUp(levelToUp = 1) {

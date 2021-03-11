@@ -18,6 +18,7 @@ type HomeProps = {
   level: number
   currentExp: number
   challengesCompleted: number
+  themeToggler: () => void
 }
 
 export default function App({
@@ -25,11 +26,11 @@ export default function App({
   level,
   currentExp,
   challengesCompleted,
+  themeToggler,
 }: HomeProps) {
-
   return (
     <>
-      <Sidebar active="home" />
+      <Sidebar active="home" themeToggler={themeToggler}/>
       <Wrapper>
         <GitHubCorner
           current="home"

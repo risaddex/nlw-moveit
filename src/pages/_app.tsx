@@ -1,6 +1,7 @@
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { myTheme } from '../styles/theme'
+import { myTheme, myDarkTheme } from '../styles/theme'
+import { useState } from 'react'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -16,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     font-family: 'Inter', sans-serif;
     background-color: ${({ theme }) => theme.colors.background};
-    // Deixa branco no começo
+      // Deixa branco no começo
   }
   
   html, body {
@@ -45,10 +46,14 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [theme, setTheme] = useState('light')
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  }
   return (
-    <ThemeProvider theme={myTheme}>
+    <ThemeProvider theme={theme === 'light' ? myTheme : myDarkTheme}>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <Component currentTheme={theme} themeToggler={themeToggler} {...pageProps} />
     </ThemeProvider>
   )
 }

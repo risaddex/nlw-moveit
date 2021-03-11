@@ -42,7 +42,10 @@ const CardContainer = styled.div`
   margin-left: 1.25rem;
   strong {
     font-size: 1.25rem;
+    color: ${({ theme }) => theme.colors.title};
+    
   }
+
 
   @media only screen and (max-width: 768px) {
     display:flex;
@@ -57,7 +60,6 @@ const LevelContainer = styled.div`
     font-size: 0.75rem;
     margin-top: 0.5rem;
     margin-left: 0.5rem;
+    color: ${({ theme }) => theme.colors.text};
   }
-
-  
 `

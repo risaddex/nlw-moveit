@@ -6,7 +6,7 @@ const LoadingSpinner = styled.div`
   left: calc(50% - 35px);
   margin-bottom: 10px;
   border: 10px solid #f3f3f3;
-  border-top: 10px solid ${({ theme }) => theme.colors.success};
+  border-top: 10px solid ${({ theme }) => theme.colors.progress};
 
   text-shadow: black;
   border-radius: 50%;

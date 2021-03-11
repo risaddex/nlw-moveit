@@ -15,6 +15,7 @@ export const ChallengeContainer = styled.div<IChallengeProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.colors.white};
 
   text-align: center;
 
@@ -30,6 +31,7 @@ export const InactiveChallenge = styled.div`
   flex-direction: column;
   align-items: center;
   color: ${({ theme }) => theme.colors.text};
+  background-color: ${({ theme }) => theme.colors.white};
 
   strong {
     font-size: 1.5rem;
@@ -48,15 +50,17 @@ export const InactiveChallenge = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-    display:none;
+    display: none;
   }
 `
 
 export const ActiveChallenge = styled.div<IChallengeProps>`
+  border-radius: 5px;
   height: 100%;
   min-width: 80%;
   display: flex;
   flex-direction: column;
+  background-color: ${({ theme }) => theme.colors.white};
 
   @media only screen and (max-width: 768px) {
     padding: 0 5px;

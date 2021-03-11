@@ -45,7 +45,7 @@ export const OuterBar = styled.div`
 
 export const LoadingBar = styled.div<IProgressWidth>(
   ({ progress }) => css`
-    background-color: ${({ theme }) => theme.colors.success};
+    background-color: ${({ theme }) => theme.colors.progress};
     border-radius: 5px;
     height: 0.5rem;
     width: ${progress}%;

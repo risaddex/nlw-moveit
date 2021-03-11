@@ -30,7 +30,10 @@ export const ChallengeButton = styled.div<{ success?: boolean }>`
       ? ({ theme }) => theme.colors.success
       : ({ theme }) => theme.colors.danger};
 
-  background: ${({ success }) => (success ? '#F7FFF5' : '#FFF5F5')};
+  background: ${({ success }) =>
+    success
+      ? ({ theme }) => theme.colors.lightSuccess
+      : ({ theme }) => theme.colors.lightDanger};
 
   &:hover {
     color: ${({ theme }) => theme.colors.white};

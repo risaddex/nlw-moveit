@@ -1,6 +1,8 @@
-import styled, { css } from 'styled-components'
+import styled, { css, ThemeContext } from 'styled-components'
 import Link from 'next/link'
 import { HomeIcon, RankingIcon } from './Svg'
+import { useContext } from 'react'
+import { Toggler } from '../Buttons/Toggler'
 
 interface SidebarProps {
   active: ActiveButtonProps
@@ -76,15 +78,18 @@ const StyledNav = styled.nav<SidebarProps>(
     }
 
     @media only screen and (max-width: 768px) {
-      display:none;
+      display: none;
     }
   `
 )
 type ActiveButtonProps = 'home' | 'ranking'
 
-export const Sidebar = ({ active }: { active: ActiveButtonProps }) => {
-  const rankingColor = active === 'home' ? '#666666' : '#5965E0'
-  const homeColor = active === 'ranking' ? '#666666' : '#5965E0'
+export const Sidebar = ({ active, themeToggler }: { active: ActiveButtonProps, themeToggler: () => void }) => {
+  const theme = useContext(ThemeContext)
+  const rankingColor =
+    active === 'home' ? theme.colors.text : theme.colors.primary
+  const homeColor =
+    active === 'ranking' ? theme.colors.text : theme.colors.primary
   const activeOpacity = (elem: ActiveButtonProps) => (active === elem ? 1 : 0.5)
 
   return (
@@ -99,7 +104,7 @@ export const Sidebar = ({ active }: { active: ActiveButtonProps }) => {
       <div>
         <div>
           <span role="home" />
-          <Link href="/app">
+          <Link href="/app" shallow={true}>
             <a title="Home">
               <HomeIcon
                 size={32}
@@ -111,7 +116,7 @@ export const Sidebar = ({ active }: { active: ActiveButtonProps }) => {
         </div>
         <div>
           <span role="ranking" />
-          <Link href="/leaderboard">
+          <Link href="/app/leaderboard" shallow={true}>
             <a title="Rankings">
               <RankingIcon
                 size={32}
@@ -122,7 +127,9 @@ export const Sidebar = ({ active }: { active: ActiveButtonProps }) => {
           </Link>
         </div>
       </div>
-      <p></p>
+      <>
+        <Toggler toggleTheme={themeToggler}/>
+      </>
     </StyledNav>
   )
 }
