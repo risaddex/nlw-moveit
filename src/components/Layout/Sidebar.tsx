@@ -84,7 +84,7 @@ const StyledNav = styled.nav<SidebarProps>(
 )
 type ActiveButtonProps = 'home' | 'ranking'
 
-export const Sidebar = ({ active, themeToggler }: { active: ActiveButtonProps, themeToggler: () => void }) => {
+export const Sidebar = ({ active }: { active: ActiveButtonProps }) => {
   const theme = useContext(ThemeContext)
   const rankingColor =
     active === 'home' ? theme.colors.text : theme.colors.primary
@@ -127,9 +127,7 @@ export const Sidebar = ({ active, themeToggler }: { active: ActiveButtonProps, t
           </Link>
         </div>
       </div>
-      <>
-        <ThemeToggler currentTheme={theme} toggleTheme={themeToggler}/>
-      </>
+      <></>
     </StyledNav>
   )
 }

@@ -48,7 +48,7 @@ const ThemeSlider = styled.div<{ currentTheme: 'light' | 'dark' }>`
   }
 `
 
-const LanguageSlider = styled.div<{ currentLanguage: 'ptbr' | 'en' }>`
+const LanguageSlider = styled.div<{ currentLanguage: string}>`
   display: flex;
   flex-direction: column;
   justify-content: center;

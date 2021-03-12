@@ -30,7 +30,7 @@ export default function App({
 }: HomeProps) {
   return (
     <>
-      <Sidebar active="home" themeToggler={themeToggler}/>
+      <Sidebar active="home"/>
       <Wrapper>
         <GitHubCorner
           current="home"
