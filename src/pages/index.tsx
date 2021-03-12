@@ -36,7 +36,7 @@ const Background = styled.div`
   }
 `
 
-const Welcome = ({ themeToggler, theme, language }) => {
+const Welcome = ({ themeToggler, theme }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(true)
   const [hasError, setHasError] = useState(false)

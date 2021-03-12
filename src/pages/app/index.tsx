@@ -12,8 +12,11 @@ import { Sidebar } from '../../components/Layout/Sidebar'
 import { ChallengesProvider } from '../../context/ChallengesContext'
 import { CountdownProvider } from '../../context/CountdownContext'
 import { User } from '../../types'
+import { Options } from '../../components/Buttons/ConfigButton';
+import { DefaultTheme } from 'styled-components';
 
 type HomeProps = {
+  theme: DefaultTheme
   user: User
   level: number
   currentExp: number
@@ -22,6 +25,7 @@ type HomeProps = {
 }
 
 export default function App({
+  theme,
   user,
   level,
   currentExp,
@@ -30,7 +34,8 @@ export default function App({
 }: HomeProps) {
   return (
     <>
-      <Sidebar active="home"/>
+      <Sidebar active="home" />
+      <Options theme={theme} themeToggler={themeToggler} />
       <Wrapper>
         <GitHubCorner
           current="home"

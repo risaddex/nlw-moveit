@@ -37,7 +37,7 @@ export const ChalllengeBox = () => {
           </StyledHeader>
           <StyledMain>
             <img src={`icons/${activeChallenge.type}.svg`} alt="Body Icons" />
-            <strong>{data.challenges.earn}</strong>
+            <strong>{data.challenges.newChallenge}</strong>
             <p>{activeChallenge.description}</p>
           </StyledMain>
           <StyledFooter>

@@ -17,11 +17,7 @@ const Switcher = styled.button`
   outline: none;
   cursor: pointer;
 
-  @media only screen and (max-width: 768px) {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-  }
+
 `
 
 const ThemeSlider = styled.div<{ currentTheme: 'light' | 'dark' }>`

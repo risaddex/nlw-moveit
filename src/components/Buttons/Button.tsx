@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Button = styled.button<{ disabled?: boolean}>`
+export const Button = styled.button<{ disabled?: boolean }>`
   width: 100%;
   height: 5rem;
   position: relative;
@@ -22,11 +22,15 @@ export const Button = styled.button<{ disabled?: boolean}>`
   &:disabled {
     background: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.text};
-    box-shadow: ${({ theme }) => theme.shadows.main };
+    box-shadow: ${({ theme }) => theme.shadows.main};
     cursor: not-allowed;
   }
 
-  >img {
+  > img {
     padding: 0.5rem;
+  }
+
+  @media only screen and (max-width: 400px) {
+    max-width: 360px;
   }
 `

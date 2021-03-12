@@ -17,7 +17,7 @@ export const StyledHeader = styled.header`
 
   @media only screen and (max-width: 768px) {
     position: fixed;
-    top: calc(10vh - 1rem);
+    top: calc(20vh - 1rem);
 
     > span:first-child {
       display: none;
@@ -59,7 +59,7 @@ export const LoadingBar = styled.div<IProgressWidth>(
       @media only screen and (max-width: 768px) {
         font-size: 2vmax;
         position: fixed;
-        top: calc(10vh - 1rem);
+        top: calc(20vh - 1rem);
         left: calc(50% - 1.5rem);
       }
     }

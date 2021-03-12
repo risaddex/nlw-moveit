@@ -30,6 +30,13 @@ const ConfigButton = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.main};
   cursor: pointer;
   z-index: 20;
+
+  @media only screen and (max-width: 768px) {
+    top: 0;
+    margin: 10px;
+    width: 45px;
+    height: 45px;
+  }
 `
 
 const OptionsDiv = styled.div`

@@ -26,4 +26,11 @@ const PanelContainer = styled.div`
     align-self: center;
     z-index: 5;
   }
+
+  @media only screen and (max-width: 400px) {
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding:0
+  }
 `

@@ -16,8 +16,10 @@ export const StyledSection = styled.section`
     justify-content: center;
     align-items: center;
     margin-top: 10vh;
-    gap:0;
+    gap: 0;
   }
+
+  
 `
 
 export const Section = ({ children }) => {

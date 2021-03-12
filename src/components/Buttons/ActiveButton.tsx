@@ -23,12 +23,16 @@ export const ActiveButton = styled(Button)<{ isActive: boolean }>`
         ? ({ theme }) => theme.colors.danger
         : ({ theme }) => theme.colors.darkPrimary};
 
-    > div { //?progress Bar
+    > div {
+      //?progress Bar
       display: none;
 
       @media only screen and (max-width: 768px) {
         display: initial;
       }
     }
+  }
+  @media only screen and (max-width: 400px) {
+    max-width: 80%;
   }
 `

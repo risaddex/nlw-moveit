@@ -31,6 +31,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
   }
 
   a {
@@ -44,6 +45,7 @@ export const GlobalStyle = createGlobalStyle`
       scroll-behavior: smooth;
     }
   }
+  
 `
 
 function MyApp({ Component, pageProps }: AppProps) {

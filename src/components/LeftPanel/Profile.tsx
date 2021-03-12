@@ -22,19 +22,27 @@ export const Profile = () => {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  
+
   > img {
-    display:flex;
+    display: flex;
     width: 5.5rem;
     height: auto;
     border-radius: 50%;
   }
-  @media only screen and (max-width: 768px) {
-    justify-content: center;    
-    position:absolute;
+
+  @media only screen and (max-width: 400px) {
+    top: calc(20vh + 1rem);
+    > img {
+      width: 3rem;
+    }
+  }
+
+  @media only screen and (max-height: 768px) {
+    justify-content: center;
+    position: absolute;
     max-height: 15vmax;
-    left:1vh;
-    top: 15vh;
+    left: 1vh;
+    top: calc(20vh + 1rem);
     align-items: center;
   }
 `
@@ -43,13 +51,18 @@ const CardContainer = styled.div`
   strong {
     font-size: 1.25rem;
     color: ${({ theme }) => theme.colors.title};
-    
   }
 
-
   @media only screen and (max-width: 768px) {
-    display:flex;
+    display: flex;
     flex-direction: column;
+  }
+
+  @media only screen and (max-width: 340px) {
+    strong {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
   }
 `
 const LevelContainer = styled.div`
@@ -61,5 +74,11 @@ const LevelContainer = styled.div`
     margin-top: 0.5rem;
     margin-left: 0.5rem;
     color: ${({ theme }) => theme.colors.text};
+    font-size: 0.5rem;
+  }
+
+  @media only screen and (max-width: 340px) {
+    align-items: flex-start;
+    display: none;
   }
 `
