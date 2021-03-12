@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { Toggler } from '../components/Buttons'
+import { Options } from '../components/Buttons/ConfigButton'
 import GitHubCorner from '../components/GitHubCorner'
 import { LoginForm } from '../components/LoginForm/index'
 import { Spinner } from '../components/LoginForm/Loading'
 import { WarningModal } from '../components/Modal'
 import { Section } from '../components/Section/index'
-import { useRouter } from 'next/router'
-import { ChallengesProvider } from '../context/ChallengesContext'
-import { Toggler } from '../components/Buttons'
+import { LanguageContext } from '../context/LanguageContext'
 
 const Background = styled.div`
   flex: 1;
@@ -35,10 +36,11 @@ const Background = styled.div`
   }
 `
 
-const Welcome = ({ themeToggler, theme }) => {
+const Welcome = ({ themeToggler, theme, language }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(true)
   const [hasError, setHasError] = useState(false)
+  const { data } = useContext(LanguageContext)
 
   const router = useRouter()
 
@@ -65,15 +67,14 @@ const Welcome = ({ themeToggler, theme }) => {
         current="app"
         projectUrl="https://github.com/risaddex/nlw-moveit"
       />
+      <Options theme={theme} themeToggler={themeToggler} />
       <Background>
-        <Toggler currentTheme={theme} toggleTheme={themeToggler} />
         {isModalOpen && (
-          <WarningModal onClose={closeModal} title="Atenção">
+          <WarningModal onClose={closeModal} title={data.warning[0]}>
             <br />
-            Este App é um clone com finalidade única e exclusivamente didática.
+            {data.warning[1]}
             <br />
-            Moveit possui todos os direitos reservados sobre seu logotipo e
-            imagem.
+            {data.warning[2]}
           </WarningModal>
         )}
         <Section>

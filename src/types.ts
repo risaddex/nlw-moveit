@@ -11,3 +11,14 @@ export type User = {
   avatar: string
   username: string
 }
+
+export type LanguageDataProps = {
+  welcome: string
+  login: string
+  input: string
+  loginError: string
+  warning: any
+  challenges: any
+  levelUp: any
+  config: any
+}

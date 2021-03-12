@@ -2,7 +2,7 @@ import styled, { css, ThemeContext } from 'styled-components'
 import Link from 'next/link'
 import { HomeIcon, RankingIcon } from './Svg'
 import { useContext } from 'react'
-import { Toggler } from '../Buttons/Toggler'
+import { ThemeToggler } from '../Buttons/Toggler'
 
 interface SidebarProps {
   active: ActiveButtonProps
@@ -128,7 +128,7 @@ export const Sidebar = ({ active, themeToggler }: { active: ActiveButtonProps, t
         </div>
       </div>
       <>
-        <Toggler toggleTheme={themeToggler}/>
+        <ThemeToggler currentTheme={theme} toggleTheme={themeToggler}/>
       </>
     </StyledNav>
   )

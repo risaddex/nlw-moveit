@@ -2,6 +2,7 @@ import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { myTheme, myDarkTheme } from '../styles/theme'
 import { useState } from 'react'
+import { LanguageProvider } from '../context/LanguageContext'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -47,13 +48,27 @@ export const GlobalStyle = createGlobalStyle`
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState('light')
+  const [language, setLanguage] = useState('ptbr')
+
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }
+
+  const languageToggler = () => {
+    language === 'ptbr' ? setLanguage('en') : setLanguage('ptbr')
+  }
   return (
     <ThemeProvider theme={theme === 'light' ? myTheme : myDarkTheme}>
-      <GlobalStyle />
-      <Component currentTheme={theme} themeToggler={themeToggler} {...pageProps} />
+      <LanguageProvider language={language}>
+        <GlobalStyle />
+        <Component
+          languageToggler={languageToggler}
+          currentTheme={theme}
+          language={language}
+          themeToggler={themeToggler}
+          {...pageProps}
+        />
+      </LanguageProvider>
     </ThemeProvider>
   )
 }

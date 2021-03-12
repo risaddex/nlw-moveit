@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { CountdownContext } from '../../context/CountdownContext'
+import { LanguageContext } from '../../context/LanguageContext'
 import { ActiveButton, Button } from '../Buttons'
 import { TimeBar } from '../ProgressBar'
 import { Clock } from './Clock'
@@ -17,6 +18,8 @@ export const Countdown = () => {
     time
   } = useContext(CountdownContext)
 
+  
+  const { data } = useContext(LanguageContext)
   const [minLeft, minRight] = String(minutes).padStart(2, '0').split('')
   const [secLeft, secRight] = String(seconds).padStart(2, '0').split('')
   
@@ -35,7 +38,8 @@ export const Countdown = () => {
 
       {hasFinished ? (
         <Button disabled>
-          Ciclo encerrado <img src="icons/check_circle.svg" alt="check circle"/>
+          {data.challenges.cycleEnd}
+          <img src="icons/check_circle.svg" alt="check circle" />
           <TimeBar progress={progress} />
         </Button>
       ) : (
@@ -44,7 +48,7 @@ export const Countdown = () => {
           onClick={isActive ? resetCountdown : startCountdown}
           isActive={isActive}
         >
-          {isActive ? 'Abandonar Ciclo' : 'Iniciar um Ciclo ►'}
+          {isActive ? data.challenges.stop : data.challenges.start}
           <TimeBar progress={progress} />
         </ActiveButton>
       )}

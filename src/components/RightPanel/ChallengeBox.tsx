@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { challengesContext } from '../../context/ChallengesContext';
 import { CountdownContext } from '../../context/CountdownContext';
+import { LanguageContext } from '../../context/LanguageContext';
 import { ChallengeButton } from '../Buttons/ChallengeButton';
 import {
   ActiveChallenge as Active,
@@ -12,6 +13,9 @@ export const ChalllengeBox = () => {
   const { activeChallenge, resetChallenge, completeChallenge } = useContext(
     challengesContext
   )
+  
+
+  const { data } = useContext(LanguageContext)
   const { resetCountdown } = useContext(CountdownContext)
 
   const handleChallengeSucceeded = () => {
@@ -28,29 +32,29 @@ export const ChalllengeBox = () => {
     <ChallengeContainer>
       {activeChallenge ? (
         <Active>
-          <StyledHeader>Ganhe {activeChallenge.amount} xp</StyledHeader>
+          <StyledHeader>
+            {data.challenges.earn} {activeChallenge.amount} xp
+          </StyledHeader>
           <StyledMain>
             <img src={`icons/${activeChallenge.type}.svg`} alt="Body Icons" />
-            <strong>Novo desafio</strong>
+            <strong>{data.challenges.earn}</strong>
             <p>{activeChallenge.description}</p>
           </StyledMain>
           <StyledFooter>
             <ChallengeButton onClick={handleChallengeFailed}>
-              Falhei
+              {data.challenges.failed}
             </ChallengeButton>
             <ChallengeButton onClick={handleChallengeSucceeded} success>
-              Completei
+              {data.challenges.complete}
             </ChallengeButton>
           </StyledFooter>
         </Active>
       ) : (
         <Inactive>
-          <strong>
-            Inicie um ciclo para receber desafios
-          </strong>
+          <strong>{data.challenges.heading}</strong>
           <div>
             <img src="icons/level-up.svg" alt="level up icon" />
-            <p>Avance de nível completando os desafios.</p>
+            <p>{data.challenges.text}</p>
           </div>
         </Inactive>
       )}

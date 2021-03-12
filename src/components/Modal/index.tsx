@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { challengesContext } from '../../context/ChallengesContext'
+import { LanguageContext } from '../../context/LanguageContext'
 import {
   Modal,
   ModalButton,
@@ -13,13 +14,14 @@ import {
 
 export const LevelUpModal = () => {
   const { level, closeModal } = useContext(challengesContext)
+  const { data } = useContext(LanguageContext)
   return (
     <Modal>
       <ModalContainer>
         <ModalMain>
           <ModalHeader>{level}</ModalHeader>
-          <ModalTitle>Parabéns</ModalTitle>
-          <ModalText>Você alcançou um novo nível!</ModalText>
+          <ModalTitle>{data.levelUp.title}</ModalTitle>
+          <ModalText>{data.levelUp.subtitle}</ModalText>
 
           <ModalButton type="button" onClick={closeModal}>
             <img src="/icons/close.svg" alt="fechar modal" />
@@ -31,7 +33,7 @@ export const LevelUpModal = () => {
           target="_blank"
           rel="noreferrer"
         >
-          Compartilhar no twitter{' '}
+          {data.levelUp.twitter}
           <span>
             <svg
               width="20"

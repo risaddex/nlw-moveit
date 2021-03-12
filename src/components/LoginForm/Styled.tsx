@@ -150,14 +150,14 @@ export const FormFooter = styled.form`
     border-radius: 0 5px 5px 0;
 
     &:hover {
-      background-color: ${({ theme }) => theme.colors.success};
+      background-color: ${({ theme }) => theme.colors.progress};
       cursor: pointer;
     }
     &:disabled {
       cursor: not-allowed;
 
       &:hover {
-        background-color: ${({ theme }) => theme.colors.danger};
+        background-color: ${({ theme }) => theme.colors.dangerButton};
       }
     }
 

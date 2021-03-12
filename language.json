@@ -1,0 +1,69 @@
+{
+  "ptbr": {
+    "welcome": "Bem vindo",
+    "login": "Faça login com seu github para começar",
+    "input": "Digite seu nome de usuário",
+    "loginError": "Usuário inválido",
+    "warning": [
+      "Atenção",
+      "Este app é um clone com finalidade única e exclusivamente didática.",
+      "Moveit possui todos os direitos reservados sobre seu logotipo e imagem."
+    ],
+    "challenges": {
+      "start": "Iniciar um ciclo ►",
+      "stop": "Abandonar ciclo",
+      "heading": "Inicie um ciclo para receber desafios",
+      "text": "Avance de nível completando os desafios.",
+      "totalCompleted": "Desafios completados",
+      "complete": "Completei",
+      "failed": "Falhei",
+      "cycleEnd": "Ciclo encerrado",
+      "earn": "Ganhe",
+      "newChallenge": "Novo desafio",
+      "worth": "Valendo"
+    },
+    "levelUp": {
+      "title": "Parabéns",
+      "subtitle": "Você alcançou um novo nível!",
+      "twitter": "Compartilhe no twitter"
+    },
+    "config": {
+      "title": "Opções",
+      "theme": "Tema",
+      "language": "Idioma"
+    }
+  },
+  "en": {
+    "welcome": "Welcome",
+    "login": "Sign-in with GitHub to start",
+    "input": "Enter your username",
+    "loginError": "Invalid username",
+    "warning": [
+      "Warning",
+      "This app is a clone with a unique and exclusively didactic purpose. Moveit has all rights reserved on its logo and image."
+    ],
+    "challenges": {
+      "start": "Start a cycle ►",
+      "stop": "Leave cycle",
+      "heading": "Start a cycle to receive challenges",
+      "text": "Level up by completing challenges",
+      "totalCompleted": "Completed Challenges",
+      "complete": "I did it!",
+      "failed": "I've failed",
+      "cycleEnd": "End of cycle",
+      "earn": "Earn",
+      "newChallenge": "New challenge",
+      "worth": "It's worth"
+    },
+    "levelUp": {
+      "title": "Congratulations",
+      "subtitle": "You reached a new level!",
+      "twitter": "Share on twitter"
+    },
+    "config": {
+      "title": "Options",
+      "theme": "Theme",
+      "language": "Language"
+    }
+  }
+}

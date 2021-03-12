@@ -1,8 +1,9 @@
 import Cookies from 'js-cookie'
-import { createContext, ReactNode, useEffect, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState, useContext } from 'react';
 import challengeData from '../../challenges.json'
 import { LevelUpModal } from '../components'
 import { Challenge, User } from '../types'
+import { LanguageContext } from './LanguageContext'
 
 const EXPCURVERATIO: number = 4
 interface IChallengesProviderProps {
@@ -43,6 +44,7 @@ export function ChallengesProvider({
   const [activeChallenge, setActiveChallenge] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const experienceToNextLevel = Math.pow((level + 1) * EXPCURVERATIO, 2)
+  const { data } = useContext(LanguageContext)
   
 
   useEffect(() => {
@@ -81,8 +83,8 @@ export function ChallengesProvider({
     new Audio('/notification.mp3').play()
 
     if (Notification.permission === 'granted') {
-      new Notification('Novo desafio !', {
-        body: `Valendo ${challenge.amount}XP`,
+      new Notification(`${data.challenges.newChallenge}!`, {
+        body: `${data.challenges.worth} ${challenge.amount}XP`,
       })
     }
   }

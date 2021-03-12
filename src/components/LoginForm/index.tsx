@@ -1,9 +1,11 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { LanguageContext } from '../../context/LanguageContext';
 import { myTheme } from '../../styles/theme';
 import { Form, FormFooter, FormHeader, FormMain, StyledForm } from './Styled';
 
 export const LoginForm = ({ setLoading, hasError }) => {
+  const {data} = useContext(LanguageContext)
   const router = useRouter()
 
   const [name, setName] = useState('')
@@ -24,11 +26,11 @@ export const LoginForm = ({ setLoading, hasError }) => {
         <FormHeader />
         <FormMain>
           <div>
-            <h3>{`Bem vindo`}</h3>
+            <h3>{data.welcome}</h3>
           </div>
           <div>
             <img src="github.svg" alt="github logo" />
-            <p>{`Faça login com seu github para começar`}</p>
+            <p>{data.login}</p>
           </div>
         </FormMain>
 
@@ -37,7 +39,7 @@ export const LoginForm = ({ setLoading, hasError }) => {
             type="text"
             onChange={(e) => setName(e.target.value)}
             name="userName"
-            placeholder={`Digite seu username`}
+            placeholder={data.input}
             required
           />
           <button
@@ -55,7 +57,7 @@ export const LoginForm = ({ setLoading, hasError }) => {
               color: myTheme.colors.danger,
             }}
           >
-            nome de usuário inválido
+            {data.loginError}
           </span>
         )}
       </Form>

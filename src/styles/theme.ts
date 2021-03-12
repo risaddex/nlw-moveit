@@ -17,6 +17,7 @@ const myTheme: DefaultTheme = {
     lightSuccess: '#F7FFF5',
     lightDanger: '#FFF5F5',
     progress: '#4CD62B',
+    dangerButton:'#E83F5B'
   },
 
   shadows: {
@@ -45,6 +46,7 @@ const myDarkTheme: DefaultTheme = {
     lightSuccess: '#044e1b',
     lightDanger: '#a80808',
     progress: '#4CD62B',
+    dangerButton: '#E83F5B',
   },
 
   shadows: {
