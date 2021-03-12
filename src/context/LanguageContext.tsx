@@ -9,6 +9,7 @@ import { LanguageDataProps } from '../types'
 
 interface LanguageContextData {
   data: LanguageDataProps
+  language: string
   toggleLanguage: () => void
 }
 
