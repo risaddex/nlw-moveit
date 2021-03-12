@@ -1,3 +1,5 @@
+[Layout Original](https://github.com/rocketseat-education/nlw-04-reactjs/blob/main/README.md)
+
 <h1 align="center">
   <img alt="move.it" title="move.it" src="./public/logo.svg" />
 </h1>
@@ -33,8 +35,18 @@ Tecnologias adicionais que utilizei por conta própria:
   <li style="list-style-type: '+'; color: green;">
     <a style="padding-left: 5px;" href="https://styled-components.com/)">Styled Components</a>
   </li>
+  <li style="list-style-type: '-'; color: red;">
+    <a style="padding-left: 5px;">CSS Modules</a>
+  </li>
  </ul>
 
+Features adicionais que tentei implementar:
+- Dark Mode
+- Multi Language
+- Layout Mobile
+- Spinner
+- Buscar perfis do github de sua API pública
+- Sidebar e outros protótipos deixados como desafio no [Figma](https://www.figma.com/file/6QidS0WKjCMdrh4kLdiIPc/Move.it-2.0-(Copy)?node-id=160%3A2761)
 ## 💻 Projeto
 
 O move.it é um app que une a técnica de Pomodoro com a realização de exercícios físicos para quem passa muito tempo na frente do computador.
