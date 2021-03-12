@@ -37,7 +37,7 @@ const Container = styled.div`
     }
   }
 
-  @media only screen and (max-height: 768px) {
+  @media only screen and (max-width: 600px) {
     justify-content: center;
     position: absolute;
     max-height: 15vmax;
